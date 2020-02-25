@@ -69,7 +69,15 @@
 
             <div class="" style="margin-top: 20px;" >
                 <ul  class="float-right btn-logout">
-                    <li><a  class="logout" href="#">  Salir   <i class="fas fa-sign-out-alt"></i>  </a></li>
+                    <li><a  class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        
+                     Salir   <i class="fas fa-sign-out-alt"></i>  
+                     
+                    </a></li>
+                    
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                    </form>
                 </ul>
             </div>
 
@@ -81,7 +89,8 @@
 
             <ul class="sidebar-menu  " id="nav-accordion">
 
-                <h3 class=" pt-3 pb-3 text-center"> HOLA </h3>
+                <h3 class=" pt-3 pb-3 text-center"> HOLA {{ $user->name }}</h3>
+       
 
                 <!-- BTN inicio -->
                 <li class="mt">

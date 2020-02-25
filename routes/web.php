@@ -20,9 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/inicio', function(){
-    return view('inicio');
-});
+Route::get('/inicio', 'InicioController@index');
 Route::get('/tabla', function(){
     return view('tabla');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
