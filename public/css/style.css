@@ -36,10 +36,10 @@ ul.btn-logout > li > .logout {
 	font-size: 12px;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
-	border: 1px solid #68c92b !important;
+	border: 1px solid #4ECDC4 !important;
 	padding: 5px 15px;
 	margin-right: 15px;
-	background: #68c92b;
+	background: #4ECDC4;
     margin-top: 50px;
     
 }
@@ -208,6 +208,8 @@ h3{
     color: #fff;
 }
 
+
+
 /*          Contenido Principal         */
 
 #main-content {
@@ -358,3 +360,23 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .badge.bg-theme {
 	background-color: #4ECDC4;
 }
+
+@media (max-width: 768px) {
+
+    .header {
+        position: absolute;
+    }
+    
+    /*sidebar*/
+    
+    #sidebar {
+        height: auto;
+        overflow: hidden;
+        position: absolute;
+        width: 100%;
+        z-index: 1001;
+    }
+    
+    
+    /* body container */
+    

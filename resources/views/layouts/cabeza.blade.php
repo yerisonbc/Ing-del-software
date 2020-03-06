@@ -89,7 +89,7 @@
 
             <ul class="sidebar-menu  " id="nav-accordion">
 
-                <h3 class=" pt-3 pb-3 text-center"> HOLA {{ $user->name }}</h3>
+                <h3 class=" pt-3 pb-3 text-center"> HOLA {{ auth()->user()->name }}</h3>
        
 
                 <!-- BTN inicio -->
@@ -107,7 +107,7 @@
                     </a>
                     <ul class="sub">
                     
-                        <li><a href="#"> <i class="fas fa-mobile-alt"></i> Productos </a></li>
+                        <li><a href="{{ route('tabla') }}"> <i class="fas fa-mobile-alt"></i> Productos </a></li>
                         <li><a href="#"> <i class="fas fa-boxes"></i> Nuevo Producto</a></li>
                         <li><a href="#"> <i class="fas fa-shopping-basket"></i> Categoria</a></li>
                         <li><a href="#"> <i class="fas fa-parachute-box"></i> Fabricantes</a></li>

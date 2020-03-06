@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login.login');
 });
 
 Auth::routes();
@@ -21,10 +21,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/inicio', 'InicioController@index');
-Route::get('/tabla', function(){
-    return view('tabla');
+
+// Route::get('/tabla', function(){
+//     return view('tabla');
+// })->name('tabla');
+Route::get('/tabla', 'ListaController@index')->name('tabla');
+// Auth::routes();
+
+Route::get('/l', function(){
+return view('login.login');
 });
 
-Auth::routes();
+Route::get('/r', function(){
+    return view('login.registro');
 
-Route::get('/home', 'HomeController@index')->name('home');
+})->name('registro');
