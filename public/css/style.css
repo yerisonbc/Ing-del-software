@@ -3,6 +3,15 @@
     padding: 0 15px;
 }
 
+.card-header > div > .container{
+    background-color: #EBEBEB;
+}
+body{
+    background-color: #fff;
+    color: #797979;
+}
+
+
 .header {
     position: fixed;
     left: 0;
@@ -32,7 +41,8 @@
     text-transform: uppercase;
 }
 ul.btn-logout > li > .logout {
-	color: #f2f2f2;
+    color: #f2f2f2;
+    list-style: none;
 	font-size: 12px;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
@@ -74,6 +84,7 @@ ul.btn-logout > li > a:hover, ul.btn-logout > li > a:focus {
 }
 
 #sidebar ul li {
+    list-style: none;
     position: relative;
 }
 
@@ -361,6 +372,85 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	background-color: #4ECDC4;
 }
 
+ /* ====================== botones======================== */
+
+
+ .btn-theme {
+    color: #fff;
+    background-color: #4ECDC4;
+    border-color: #48bcb4;
+  }
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-theme:active,
+.btn-theme.active,
+.open .dropdown-toggle.btn-theme {
+  color: #fff;
+  background-color: #48bcb4;
+  border-color: #48bcb4;
+}
+
+/* ============================== */
+.btn-theme04 {
+    color: #fff;
+    background-color: #ed5565;
+    bobtn-rder-color: #da4453;
+  }
+  .btn-theme04:hover,
+  .btn-theme04:focus,
+  .btn-theme04:active,
+  .btn-theme04.active,
+  .open .dropdown-toggle.btn-theme04 {
+    color: #fff;
+    background-color: #da4453;
+    border-color: #da4453;
+  }
+
+
+
+
+/* Migas de Pan */
+
+.breadcrumb{
+    background-color: #fff;
+    height: 10px;
+}
+
+
+
+/* ================  */
+table{
+    box-sizing: border-box;
+    width:100%;
+}
+
+
+.btn-xs{
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+
+
+.site-footer{
+    background: #4ECDC4;
+    color: #fff;
+    padding: 15px 0;
+}
+
+.go-top {
+    margin-right: 1%;
+    margin-top: -25px;
+    float: right;
+    background: rgba(255,255,255,.5);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+
 @media (max-width: 768px) {
 
     .header {
@@ -377,6 +467,20 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
         z-index: 1001;
     }
     
-    
+
     /* body container */
-    
+    #main-content {
+        margin: 0px!important;
+        position: none !important;
+    }
+}
+
+
+@media (max-width: 455px) {
+    .btn-xs {
+        padding: auto, auto;
+        font-size: auto;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+}

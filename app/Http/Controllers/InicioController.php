@@ -16,6 +16,6 @@ class InicioController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('inicio', ['user' => auth()->user()]);
+        return view('admin.inicio', ['user' => auth()->user()]);
     }
 }

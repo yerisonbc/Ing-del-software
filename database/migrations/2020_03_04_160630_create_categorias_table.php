@@ -18,7 +18,7 @@ class CreateCategoriasTable extends Migration
             $table->string('categoria', 25);
             $table->string('descripcion', 25)->nullable();
             $table->unsignedBigInteger('user_ins');
-            $table->unsignedBigInteger('user_udt');
+            $table->unsignedBigInteger('user_udt')->nullable();
             $table->timestamps();
             $table->char('estado',1);
 
@@ -27,7 +27,7 @@ class CreateCategoriasTable extends Migration
         });
     }
 
-    /**
+    /**s
      * Reverse the migrations.
      *
      * @return void

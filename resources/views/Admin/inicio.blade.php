@@ -1,5 +1,5 @@
 
-@extends('layouts.cabeza')
+@extends('admin.layouts.app')
 
 
 
@@ -26,7 +26,7 @@
 
                         <div class="green-panel">
                             <div class="green-header">
-                                <h5>Ventas</h5>
+                                <h5>Reparaciones</h5>
                             </div>
 
                             <div>
@@ -52,9 +52,9 @@
 
                     <div class="white-panel pn">
                         <div class="white-header">
-                            <h5>Pedidos</h5>
+                            <h5>Articulos</h5>
                         </div>
-                        <div> Total 5 </div>
+                        <div> Total 32 </div>
                     </div>
 
                     </div>

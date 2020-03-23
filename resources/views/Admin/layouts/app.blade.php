@@ -7,10 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>KLK</title>
+    <title>{{ __('Inicio') }}</title>
 
     <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
+    
+    <!-- <script src=" {{ asset('js/app.js') }}" defer></script> -->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,7 +20,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    
     <!-- Iconos -->
+    <!-- <link rel="stylesheet" href="{{asset('css/all.min.css')}}"> -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     
     <!-- ==================================================================================  -->
@@ -41,7 +44,7 @@
                 <div style="color:white" class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
 
-            <a href="#" class="logo"> <img src="{{ asset('img/logo/favicon-32x32.png')}}"  class="p-1 rounded-circle "  alt="logo"></a>
+            <a href="{{route('inicio')}}" class="logo"> LOGO</a>
             
             <!--                   Notificaciones            -->
             <div class="nav notify-row" id="top_menu">
@@ -85,7 +88,7 @@
 <!-- ==================================================== Barra de navegacion ========================================== -->
     <aside>
 
-        <div id="sidebar" class="navcollapse">
+        <div id="sidebar" class="navcollapse pl-2">
 
             <ul class="sidebar-menu  " id="nav-accordion">
 
@@ -94,24 +97,24 @@
 
                 <!-- BTN inicio -->
                 <li class="mt">
-                    <a href="" class="active">
+                    <a id='inicio' href="{{route('inicio')}}" class="">
                         <i class="fas fa-home"></i>
                         <span class="fntb" >Inicio</span>
                     </a>
                 </li>
 
                 <li class="sub-menu ">
-                    <a href="javascript:;" class="" onmouseover="javascript:;" >
+                    <a id='productos' href="javascript:;" class="" onmouseover="javascript:;" >
                         <i class="fas fa-mobile-alt"></i>
                         <span class="fntb" >Productos</span>
                     </a>
                     <ul class="sub">
                     
-                        <li><a href="{{ route('tabla') }}"> <i class="fas fa-mobile-alt"></i> Productos </a></li>
+                        <li><a href="{{ route('lista_productos') }}"> <i class="fas fa-mobile-alt"></i> Productos </a></li>
                         <li><a href="#"> <i class="fas fa-boxes"></i> Nuevo Producto</a></li>
-                        <li><a href="#"> <i class="fas fa-shopping-basket"></i> Categoria</a></li>
-                        <li><a href="#"> <i class="fas fa-parachute-box"></i> Fabricantes</a></li>
-                        <li><a href="#"> <i class="fas fa-truck"></i> suplidores</a></li>
+                        <li><a href="{{route('lista_categorias')}}"> <i class="fas fa-shopping-basket"></i> Categoria</a></li>
+                        <li><a href="{{route('lista_marcas')}}"> <i class="fas fa-parachute-box"></i> Marcas</a></li>
+                        <li><a href="{{route('lista_proveedores')}}"> <i class="fas fa-truck"></i> Proveedores</a></li>
                     </ul>
                 </li>
 
@@ -123,7 +126,7 @@
                     </a>
                     <ul class="sub">
                     
-                        <li><a href="mant_reparacion.php?menu=R"> <i class="fas fa-mobile-alt"></i> Reparaciones </a></li>
+                        <li><a href="#" onclick='u()' > <i class="fas fa-mobile-alt"></i> Reparaciones </a></li>
                         <li><a href="registro_reparacion.php?menu=R"> <i class="fas fa-boxes"></i> Nueva Reparacion</a></li>
                     </ul>
                 </li>
@@ -158,11 +161,17 @@
     </aside>
 
     <aside>
+
         <section id="main-content">
+        
             <section class="wrapper">
 
-            <h1>Panel de administración</h1>
-            <hr>
+            <h2>Panel de administración</h2>
+            <!-- <hr> -->
+            
+
+     <!--     Migas de Pan      -->
+            
             @yield('content')
 
  
@@ -171,9 +180,22 @@
         </section>
 
     </aside>
+
+    <footer class="site-footer">
+      <div class="text-center">
+        <p>
+          © Copyrights <strong>Dashio</strong>. All Rights Reserved
+        </p>
+        <div class="credits">
+     
+          Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
+        </div>
+        <a href="buttons.html#" class="go-top">
+          <i class="fa fa-angle-up"></i>
+          </a>
+      </div>
+    </footer>
     </section>
-
-
 
 
 <script class="include" type="text/javascript" src="{{ asset('js/lib-navbar/jquery.dcjqaccordion.2.7.js')}}"></script>
@@ -181,5 +203,9 @@
   
   <!--common script for all pages-->
 <script src="{{ asset ('js/lib-navbar/common-scripts.js')}}"></script>
+
+<script src="{{asset('js/my_scripts.js')}}"></script>
+
+@yield('scripts')
 </body>
 </html>

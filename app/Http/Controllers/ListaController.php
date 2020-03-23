@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+Use App\Producto;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+
+// use app\categoria;
 
 class ListaController extends Controller
 {
@@ -16,9 +19,10 @@ class ListaController extends Controller
     
     public function index()
     {
-        $producto = DB::select('select * from productos where id_producto=1');
+        
+        $productos= Producto::all();
         $user = auth()->user();
-                return view('tabla', ['producto'=>$producto]);
+        return view('tabla', compact('productos'));
         
     }
 }

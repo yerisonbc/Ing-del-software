@@ -122,6 +122,11 @@ margin-left: 4px;
                         </div>
                         <input id="email" type="email" placeholder="username" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                         
+						@error('email')
+							<span class="invalid-feedback" role="alert">
+								<strong>{{ $message }}</strong>
+							</span>
+                        @enderror
 						
 					</div>
 
@@ -157,21 +162,7 @@ margin-left: 4px;
 	</div>
 </div>
     
-<script>
-  function mostrarConrasena(){
-   
-        if($('#show_hide_password input').attr("type") == "text"){
-            $('#show_hide_password input').attr('type', 'password');
-            $('#show_hide_password i').addClass( "fa-eye-slash" );
-            $('#show_hide_password i').removeClass( "fa-eye" );
-        }else if($('#show_hide_password input').attr("type") == "password"){
-            $('#show_hide_password input').attr('type', 'text');
-            $('#show_hide_password i').removeClass( "fa-eye-slash" );
-            $('#show_hide_password i').addClass(  );
-        }
-    
-}
-</script>
+
 <script>
   function mostrarContrasena(){
 	event.preventDefault();
