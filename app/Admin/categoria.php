@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +13,13 @@ class categoria extends Model
         
         
         return $query->where('estado', "$estado")->where('categoria', "LIKE", "%$busqueda%");
+    }
+    
+
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'id_categoria');
     }
 
 }

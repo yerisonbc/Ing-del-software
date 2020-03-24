@@ -1,6 +1,5 @@
 @extends('Admin.layouts.app')
-
-    
+   
     @section('content')
 
 <!--------------------Migas de pan --------------------------->
@@ -11,6 +10,7 @@
         </ol>
     </nav>
     <hr>
+
 
     <h2 class="titulo text-center p-3" style=""> Lista Proveedores</h2>
             

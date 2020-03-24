@@ -27,7 +27,7 @@ class CreateProductTable extends Migration
             $table->unsignedBigInteger('id_categoria');
             $table->unsignedBigInteger('id_proveedor');
             $table->unsignedBigInteger('user_ins');
-            $table->unsignedBigInteger('user_udt');
+            $table->unsignedBigInteger('user_udt')->nullable();
             $table->timestamps();
             $table->char('estado');
 

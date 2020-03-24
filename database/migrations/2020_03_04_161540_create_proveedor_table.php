@@ -16,11 +16,11 @@ class CreateProveedorTable extends Migration
         Schema::create('proveedor', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre',25 );
-            $table->string('telefono', 12);
-            $table->string('correo',50);
+            $table->string('telefono', 12)->nullable();
+            $table->string('correo',50)->nullable();
             $table->string('pagina_web', 50)->nullable();
             $table->unsignedBigInteger('user_ins');
-            $table->unsignedBigInteger('user_udt');
+            $table->unsignedBigInteger('user_udt')->nullable();
             $table->timestamps();
             $table->string('estado',10);
 

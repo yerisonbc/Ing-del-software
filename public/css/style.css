@@ -451,6 +451,10 @@ table{
     -webkit-border-radius: 50%;
 }
 
+legend{
+    border-bottom: 1px solid #e5e5e5;
+}
+
 @media (max-width: 768px) {
 
     .header {

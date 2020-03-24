@@ -1,5 +1,5 @@
 <div class=" table-responsive">
-           <table class="table" >
+           <table class="table table-striped" >
                 @if(isset($busqueda))
                     <p class="pl-3">Resultados de: {{$busqueda}}</p>
                 @endif

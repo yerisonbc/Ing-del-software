@@ -22,9 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/inicio', 'InicioController@index')->name('inicio');
 
 
-Route::get('/lista_categorias', 'listas\CategoriaController@show')->name('lista_categorias');
-Route::get('/nueva_categoria', 'listas\CategoriaController@index')->name('nueva_categoria');
-Route::post('categoria', 'listas\CategoriaController@store');
+Route::get('/lista_categorias', 'Admin\CategoriaController@show')->name('lista_categorias');
+Route::get('/nueva_categoria', 'Admin\CategoriaController@index')->name('nueva_categoria');
+Route::post('categoria', 'Admin\CategoriaController@store');
 
 
 Route::get('/lista_marcas', 'Admin\MarcaController@show')->name('lista_marcas');
@@ -37,8 +37,9 @@ Route::get('nuevo_proveedor', 'Admin\ProveedorController@new')->name('nuevo_prov
 Route::post('proveedor', 'Admin\ProveedorController@store');
 
 
-Route::get('/lista_productos', 'Admin\productoController@index')->name('lista_productos');
-Route::get('/nuevo_producto', 'Admin\productoController@index')->name('nuevo_producto');
+Route::get('/lista_productos', 'Admin\productoController@show')->name('lista_productos');
+Route::get('/nuevo_producto', 'Admin\productoController@new')->name('nuevo_producto');
+Route::post('/producto', 'Admin\productoController@store')->name('producto');
 // Auth::routes();
 
 Route::get('/l', function(){

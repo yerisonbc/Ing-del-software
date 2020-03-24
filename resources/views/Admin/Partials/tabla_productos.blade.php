@@ -1,33 +1,55 @@
+<div class=" table-responsive">
 
-            <table class="table table-striped display">
+    <table class="table table-striped ">
 
-<thead>
-    <tr>
-        <th>Código</th>
-        <th>Producto</th>
-        <th>Modelo</th>
-        <th>Cantidad</th>
-        <th>Precio</th>
-        <th>Categoria</th>
-        <th>Estado</th>
-        <th>Foto</th>
-        <th></th>
-    </tr>
-</thead>
+        @if(isset($busqueda))
+            <p class="pl-3">Resultados de: {{$busqueda}}</p>
+        @endif
 
-<tbody>
-    <td>1</td>
-    <td> @foreach ($productos as $producto) 
-        {{$producto->producto}}
-    @endforeach
-     </td>
-    <td>10</td>
-    <td>10</td>
-    <td>25000</td>
-    <td>Celulare</td>
-    <td>Nuevo</td>
-    <td></td>
-    <td></td>
-</tbody>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Producto</th>
+                <th>Modelo</th>
+                <th>Caracteristicas</th>
+                <th>Cantidad</th>
+                <th>Precio RD$</th>
+                <th>Categoria</th>
+                <th>Proveedor</th>
+                <th>Estado</th>
+                <th>Foto</th>
+                <th></th>
+            </tr>
+        </thead>
 
-</table>
+        <tbody>
+        @foreach ($productos as $producto) 
+            <tr>
+                <td> {{$producto->id}}</td>
+                <td> {{$producto->producto}}</td>
+                <td> {{$producto->id_modelo}}</td>
+                <td> {{$producto->caracteristicas}}</td>
+                <td> {{$producto->cantidad}}</td>
+                <td> {{$producto->precio}}</td>
+                <td> {{$producto->id_categoria}}</td>
+                <td> {{$producto->id_proveedor}}</td>
+                <td> {{$producto->estado}}</td>
+                <td>  
+                    <a  href="" class='btn btn-theme btn-xs'>
+                        <i class='fas fa-edit'></i>
+                    </a> 
+                    <a href="" class='btn btn-theme04 btn-xs'  >
+                        <i class='far fa-trash-alt'></i>
+                    </a>
+                </td>
+                <td> </td>
+                
+            </tr>
+        @endforeach
+        </tbody>
+        </div>
+
+    </table>
+    <div class="card-footer">
+    {{ $productos->links()  }}
+    </div>

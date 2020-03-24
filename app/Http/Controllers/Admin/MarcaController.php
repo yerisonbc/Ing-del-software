@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\controller;
-use App\Marca;
+use App\Admin\Marca;
 
 
 use Illuminate\Http\Request;
@@ -23,11 +23,22 @@ class MarcaController extends Controller
 
     public function store(Request $request) //guardar un registro
     {
-        $request['user_ins'] = 1;
-        $request['user_udt'] = 1;
-        $request['estado'] = 'a';
-        Marca::create($request->all());
-        return Redirect('lista_marcas');
+        $alert;
+
+        try {
+            
+            $user = auth()->user()->id;
+            $request['user_ins'] = $user;
+            $request['user_udt'] = $user;
+            $request['estado'] = 'A';
+            Marca::create($request->all());
+            $alert = 'success_ins';
+
+        } catch (\Exception $e) {
+            $alert = 'Error_ins';
+        }
+       
+        return Redirect('lista_marcas')->with('status', $alert);
     }
 
 

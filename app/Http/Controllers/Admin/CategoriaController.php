@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\listas;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Categoria;
+use App\Admin\Categoria;
 use App\Http\Controllers\controller;
 
 
@@ -36,6 +36,18 @@ class CategoriaController extends Controller
             
             return view('Admin.Mantenimiento.categoria', compact('lista'));
         }
+        elseif($request->has('id')){
+
+            $id = $request->get('id');
+            
+            $lista = Categoria::where('id',"$id")->get();
+
+            return  response()->json(view('Admin.partials.tabla_categoria', compact('lista', 'id'))->render());
+            
+                   
+            
+
+        }
 
         else
         {
@@ -55,15 +67,29 @@ class CategoriaController extends Controller
 
     public function store(Request $request)
     {
+        $alert;
+
+        try {
+
+            $user = auth()->user()->id;
+            
+            $request['user_ins'] = $user;
+            $request['user_udt'] = $user;
+            $request['estado'] = 'A';
+            Categoria::create($request->all());
+            $alert = 'success_ins';
+            
+            // return response()->json($request);
+            
+            
+            
+        } catch (\Exception $e) {
+            $alert = 'Error_ins';
+        }
+        return redirect('lista_categorias')->with('status', $alert);
+
         
         
-        $request['user_ins'] = 1;
-        $request['user_udt'] = 1;
-        $request['estado'] = 'A';
-        
-        // return response()->json($request);
-        Categoria::create($request->all());
-        
-        return Redirect('lista_categorias');
+
     }
 }

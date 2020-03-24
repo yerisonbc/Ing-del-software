@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
     @section('content')
-    <!--               Migas de pan                          -->
+    <!---------------------Migas de pan ---------------------------------------->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('inicio')}}">Inicio</a></li>
@@ -11,7 +11,7 @@
         </nav>
         <hr>
         <br>
-
+<!-- ----------------------------------------------------------------------------- -->
         <div class="card">
             <h2 class="text-center p-3">Agregar una nueva Marca</h2>
 

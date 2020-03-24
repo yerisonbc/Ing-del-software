@@ -19,7 +19,7 @@ class CreateModelosTable extends Migration
             $table->string('descripcion',25)->nulleble();
             $table->unsignedBigInteger('id_marca');
             $table->unsignedBigInteger('user_ins');
-            $table->unsignedBigInteger('user_udt');
+            $table->unsignedBigInteger('user_udt')->nullable();
             $table->timestamps();
             $table->char('estado',1);
 

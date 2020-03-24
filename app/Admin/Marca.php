@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,6 +20,10 @@ class Marca extends Model
     {
         
         return $query->where('estado',  "$busqueda");
+    }
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'id_marca');
     }
 
 

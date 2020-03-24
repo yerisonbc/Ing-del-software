@@ -22,11 +22,30 @@ class proveedorController extends Controller
 
     public function store(Request $request) //guardar un registro
     {
-        $request['user_ins'] = 1;
-        $request['user_udt'] = 1;
-        $request['estado'] = 'A';
-        Proveedor::create($request->all());
-        return Redirect('lista_proveedores');
+        $alert;
+        try {
+
+            $user = Auth()->user()->id;
+            $request['user_ins'] = $user;
+            $request['user_udt'] = $user;
+            $request['estado'] = 'A';
+            
+            Proveedor::create($request->all());
+
+            $alert = 'success_ins';
+            
+    
+            } catch (\Exception $e) {
+
+                $alert = 'Error_ins';
+                
+            }
+
+            
+            return redirect('lista_proveedores')->with('status', $alert);
+
+            
+        
     }
 
 

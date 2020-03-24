@@ -1,5 +1,5 @@
-        <div class=" table-responsive-sm">
-           <table class="table" >
+        <div class=" table-responsive">
+           <table class="table table-striped" >
                 @if(isset($busqueda))
                     <p class="pl-3">Resultados de: {{$busqueda}}</p>
                 @endif
@@ -10,8 +10,7 @@
                         <th>Descripción</th> 
                         <th>Estado</th> 
                         <th></th>
-                        
-                    
+
                     </tr>
                 </thead>
 

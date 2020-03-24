@@ -78,6 +78,26 @@
         }
 
 
+    
+        $(document).on('click', '#update', function(e){ 
+            
+            e.preventDefault();  
+            var id = $(this).attr('href').split('id=')[1];
+       
+            $.ajax({
+            url:route,
+            data: {id: id},
+            type: 'GET',
+            datatype: 'json',
+            success: function(data){
+                // console.log(data);
+                $("."+id).html(data);
+            }
+        });
+                
+        });
+
+    
     </script>
 
 

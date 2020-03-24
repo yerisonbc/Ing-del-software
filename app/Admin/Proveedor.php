@@ -24,6 +24,9 @@ class Proveedor extends Model
         
         return $query->where('estado',  "$busqueda");
     }
-
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'id_proveedor');
+    }
     
 }

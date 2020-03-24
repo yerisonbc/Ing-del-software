@@ -13,11 +13,11 @@ class CreateFotosProdutosTable extends Migration
      */
     public function up()
     {
-        Schema::create('fotos_produtos', function (Blueprint $table) {
+        Schema::create('fotos_productos', function (Blueprint $table) {
             $table->unsignedBigInteger('id_producto');
             $table->string('foto');
             $table->unsignedBigInteger('user_ins');
-            $table->unsignedBigInteger('user_udt');
+            $table->unsignedBigInteger('user_udt')->nullable();
             $table->timestamps();
             $table->char('estado');
 

@@ -18,9 +18,13 @@ class CreateMarcasTable extends Migration
             $table->string('nombre',25);
             $table->string('descripcion')->nullable();
             $table->unsignedBigInteger('user_ins');
-            $table->unsignedBigInteger('user_udt');
+            $table->unsignedBigInteger('user_udt')->nullable();
             $table->timestamps();
             $table->char('estado',10);
+
+            
+            $table->foreign('user_ins')->references('id_user')->on('perfil_usuarios')->onDelete('cascade');
+            $table->foreign('user_udt')->references('id_user')->on('perfil_usuarios')->onDelete('cascade');
         });
     }
 
