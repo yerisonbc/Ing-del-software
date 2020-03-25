@@ -18,6 +18,37 @@
           <strong>Error!</strong> No se pudo completar la accion, Intentelo de nuevo!.
       </div>
     @break
+<!--========================  update  ========================================================== -->
+    @case('success_udt')
+
+      <div class="alert alert-success alert-dismissible" id="myAlert">
+          <button type="button" onclick="close_alert()" class="close">&times;</button>
+          <strong>Exito!</strong> Registro Actualizado Correctamente.
+      </div>
+    @break
+    @case('Error_udt')
+
+      <div class="alert alert-danger alert-dismissible" id="myAlert">
+          <button type="button" class="close">&times;</button>
+          <strong>Error!</strong> No se pudo completar la accion, Intentelo de nuevo!.
+      </div>
+    @break
+
+ <!-- ============================= delete ==================================================== -->
+    @case('success_dlt')
+
+      <div class="alert alert-success alert-dismissible" id="myAlert">
+          <button type="button" onclick="close_alert()" class="close">&times;</button>
+          <strong>Exito!</strong> Registro Eliminado Correctamente.
+      </div>
+    @break
+    @case('Error_dlt')
+
+      <div class="alert alert-danger alert-dismissible" id="myAlert">
+          <button type="button" class="close">&times;</button>
+          <strong>Error!</strong> No se pudo completar la accion, Intentelo de nuevo!.
+      </div>
+    @break
 
 @endswitch
 @endif

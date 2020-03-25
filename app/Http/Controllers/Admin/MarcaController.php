@@ -60,6 +60,14 @@ class MarcaController extends Controller
             return view('Admin.Mantenimiento.marcas', compact('lista'));
             
         }
+        elseif($request->has('id')){
+
+            $id = $request->get('id');  
+            $lista = Marca::where('id', "$id")->get();        
+            return  response()->json(view('Admin.partials.tabla_marcas', compact('lista'))->render());
+
+            
+        }
 
 
         else          //      ver Todos los registros
@@ -75,4 +83,66 @@ class MarcaController extends Controller
 
         }
     }
+    public function update(Request $request)
+    {
+        $alert;
+
+        try {
+
+            $user = auth()->user()->id;
+            $id = $request->input('id');
+            $marca = $request->input('marca');
+            $descripcion =  $request->input('descripcion');
+            Categoria::where('id', "$id")->update(['marca'=>"$marca", 'descripcion'=> "$descripcion", 'user_udt'=>"$user"]);
+            $alert = 'success_udt';
+            
+        } catch (\Exception $e) {
+            $alert = 'error_udt';
+        }
+    
+        return redirect('lista_marcas')->with('status', $alert);
+        
+
+
+    }
+
+
+    public function delete(Request $request)
+    {
+        $alert;
+        $s;
+        $id = $request->input('id_dlt');
+
+       try {
+
+            $estado = Marca::where('id', "$id")->get('estado');
+
+            if ( $estado[0]->estado == 'A'  )
+             {
+                $s ='I'; 
+                $alert = 'success_dlt';
+
+            }
+            else
+            { 
+                $s ='A';
+                $alert = 'success_udt';
+
+            }
+
+            Marca::where('id', "$id")->update(['estado'=>"$s"]); 
+
+       } catch (\Exception $e)  {
+
+            $alert = 'Error_dlt';
+
+       }
+
+        return redirect('lista_marcas')->with('status', $alert);
+
+
+
+    }
+
+
 }

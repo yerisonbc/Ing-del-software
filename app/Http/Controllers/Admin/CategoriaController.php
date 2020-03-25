@@ -9,11 +9,13 @@ use App\Http\Controllers\controller;
 
 class CategoriaController extends Controller
 {
+    
 
     public function __construct()
     {
         $this->middleware('auth');
     }
+    
 
     public function index()
     {
@@ -22,6 +24,7 @@ class CategoriaController extends Controller
 
     public function show(Request $request )
     {
+        
 
         if($request->has('buscar'))
         {
@@ -43,8 +46,6 @@ class CategoriaController extends Controller
             $lista = Categoria::where('id',"$id")->get();
 
             return  response()->json(view('Admin.partials.tabla_categoria', compact('lista', 'id'))->render());
-            
-                   
             
 
         }
@@ -88,8 +89,67 @@ class CategoriaController extends Controller
         }
         return redirect('lista_categorias')->with('status', $alert);
 
+    }
+
+
+    public function update(Request $request)
+    {
+        $alert;
+
+        try {
+
+            $user = auth()->user()->id;
+            $id = $request->input('id');
+            $categoria = $request->input('categoria');
+            $descripcion =  $request->input('descripcion');
+            Categoria::where('id', "$id")->update(['categoria'=>"$categoria", 'descripcion'=> "$descripcion", 'user_udt'=>"$user"]);
+            $alert = 'success_udt';
+            
+        } catch (\Exception $e) {
+            $alert = 'error_udt';
+        }
+    
+        return redirect('lista_categorias')->with('status', $alert);
         
-        
+
+
+    }
+
+
+    public function delete(Request $request)
+    {
+        $alert;
+        $s;
+        $id = $request->input('id_dlt');
+
+       try {
+
+            $estado = Categoria::where('id', "$id")->get('estado');
+
+            if ( $estado[0]->estado == 'A'  )
+             {
+                $s ='I'; 
+                $alert = 'success_dlt';
+
+            }
+            else
+            { 
+                $s ='A';
+                $alert = 'success_udt';
+
+            }
+
+            Categoria::where('id', "$id")->update(['estado'=>"$s"]); 
+
+       } catch (\Exception $e)  {
+
+            $alert = 'Error_dlt';
+
+       }
+
+        return redirect('lista_categorias')->with('status', $alert);
+
+
 
     }
 }

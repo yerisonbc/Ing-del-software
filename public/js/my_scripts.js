@@ -67,12 +67,60 @@ function close_alert(){
 
 }
 
-$(document).ready(function(){
-    
+function alertDlt(){
+      
+    $.confirm({
 
+        title: '¿Estas seguro ?',
+        content: '¿Desea eliminar este registro?',
+        buttons: 
+        {
+            Confirmar:{
+               btnClass: 'btn-blue',
+              action: function(){$("#form_dlt").submit();}
+                  
+                
+            },
 
+            Cancelar:{
+              btnClass: 'btn-danger',
+              action: function(){}            
+            },  
+            
+                   
+        }
+    });
+
+}
+
+function alertUdt(){
+    $.confirm({
+
+        title: '¿Estas seguro ?',
+        content: '¿Desea actualizar este registro?',
+        buttons: 
+        {
+            Confirmar:{
+            btnClass: 'btn-blue',
+            action: function(){$("#form_udt").submit();}
+                
+                
+            },
+
+            Cancelar:{
+            btnClass: 'btn-danger',
+            action: function(){}            
+            },  
+            
+                
+        }
+    });
+}
 
 // -------------------------------- Menu lateral ----------------------------------------------------------------
+
+$(document).ready(function(){
+    
     var url= window.location;
     if(url == 'http://127.0.0.1:8000/inicio')
      {
@@ -110,3 +158,19 @@ $(document).ready(function(){
     
     
 });
+
+// ======================= editar ========================================
+function editar(id)
+{       
+            $.ajax({
+                url:route,
+                data: {id: id},
+                type: 'GET',
+                datatype: 'json',
+                success: function(data){
+                    console.log(data);
+                    console.log(id);
+                    // $("."+id).html(data);
+                }
+            });
+}

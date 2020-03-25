@@ -58,6 +58,24 @@
     </div>
 
 
+
+    <form style=" visibility: hidden;" id='form_dlt' action="marca_delete" method="post">
+        @csrf 
+        <input type="text" name='id_dlt' id="id_dlt" value='5'> 
+    </form>
+   
+    <form style=" visibility: hidden;" id='form_udt' action="marca_update" method="post"> 
+
+        @csrf 
+        <input  id="id" type="text" class="form-control" name="id" required   readonly value="">   
+        <input  id="categoria"   type="text" class="form-control" name="marca" required autofocus maxlength="10"value=""> 
+        <input  id="descripcion"    type="text" class="form-control" name="descripcion"  value="">  
+        <input  id="estado"   type="text" class="form-control" name="estado" readonly  value=""> 
+
+    </form>
+    
+
+
        
     
     
@@ -86,6 +104,40 @@
                 
                 timer = setTimeout(buscar, 1000);
             }
+
+            $(document).on('click', '#edit', function(e){ 
+
+                e.preventDefault();
+                var id = $(this).attr('href').split('id=')[1];  
+                editar(id);
+                    
+            });
+
+            $(document).on('click', '#udt_s', function(e){ 
+                e.preventDefault(); 
+
+                document.getElementById("id").value =         document.getElementById("id_udt").value;
+                document.getElementById("categoria").value =   document.getElementById("categoria_udt").value;
+                document.getElementById("descripcion").value = document.getElementById("descripcion_udt").value;
+                document.getElementById("estado").value =      document.getElementById("estado_udt").value;
+
+                alertUdt();
+
+            });
+
+            $(document).on('click', '#delete', function(e){ 
+                e.preventDefault();  
+
+                var id = $(this).attr('href').split('id=')[1];
+                document.getElementById("id_dlt").value = id;
+                alertDlt();
+            });
+
+
+
+
+
+
 
            
         </script>

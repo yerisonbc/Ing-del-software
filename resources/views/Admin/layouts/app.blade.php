@@ -9,19 +9,22 @@
 
     <title>{{ __('Inicio') }}</title>
 
-    <!-- Scripts -->
+    
     
     
 
-    <!-- Fonts -->
+    <!-- =============================== Fonts  ================================= -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
+    <!--  ==================== Styles =========================== -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    
-    <!-- Iconos -->
+
+    <!-- ====================== Alertas ======================= -->
+    <link rel="stylesheet" href="{{ asset('css/jquery-confirm.min.css') }}">
+  
+    <!-- ====================== Iconos ========================================= -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     
     <!-- ==================================================================================  -->
@@ -58,12 +61,7 @@
                     </li>
 
                     <li>
-                        <a href="#">
-                        <i class="fa fa-bell-o"></i>
-                     <span class="badge bg-warning">7</span>
-                            
-
-                        </a>
+                        <a href="#">    <i class="fas fa-bell"></i> <span class="badge bg-warning">    7   </span>    </a>
                     </li>
                 </ul>
                 
@@ -199,13 +197,18 @@
 
 
 
-<!-- -------------------         scripts             ------------------------------------- -->
+<!-- =================================== scripts =================================================-->
     <script src="{{ asset('/js/lib-navbar/jquery-3.4.1.min.js') }}"></script>
     <script src=" {{ asset('js/app.js') }}" ></script>
     <script class="include" type="text/javascript" src="{{ asset('js/lib-navbar/jquery.dcjqaccordion.2.7.js')}}"></script>
     <script src="{{ asset('js/lib-navbar/jquery.scrollTo.min.js')}}"></script>
     <script src="{{ asset ('js/lib-navbar/common-scripts.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
+
+
+
     
   
   
