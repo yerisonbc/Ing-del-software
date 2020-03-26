@@ -46,3 +46,25 @@ Route::get('/lista_productos', 'Admin\productoController@show')->name('lista_pro
 Route::get('/nuevo_producto', 'Admin\productoController@new')->name('nuevo_producto');
 Route::post('/producto', 'Admin\productoController@store')->name('producto');
 // Auth::routes();
+
+Route::get('/l', function(){
+return view('login.login');
+})->name('l');
+
+Route::get('/r', function(){
+    return view('login.registro');
+
+})->name('registro');
+
+Route::get('/rp', function(){
+    return view('Admin.Form.registro_categoria');
+    });
+
+
+// ============================= rutas usuarios ====================================
+
+Route::get('/inicio_user', 'User\usuarioController@index')->name('inicio_user');
+Route::get('/iu', function(){
+    return view ('User.pp');
+    });
+

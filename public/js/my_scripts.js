@@ -168,9 +168,8 @@ function editar(id)
                 type: 'GET',
                 datatype: 'json',
                 success: function(data){
-                    console.log(data);
-                    console.log(id);
-                    // $("."+id).html(data);
+                    
+                    $("."+id).html(data);
                 }
             });
 }

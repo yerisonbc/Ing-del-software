@@ -103,6 +103,7 @@
             e.preventDefault();
             var id = $(this).attr('href').split('id=')[1];  
             editar(id);
+            // console.log(id);
                 
         });
 

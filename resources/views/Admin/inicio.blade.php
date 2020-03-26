@@ -60,4 +60,8 @@
                     </div>
 
                 </div>
+                <div class="section">
+                    
+                    <img class="p-5" src="img/grafica.jpg" alt="">
+                </div>
                 @endsection

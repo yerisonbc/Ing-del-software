@@ -64,7 +64,7 @@ class MarcaController extends Controller
 
             $id = $request->get('id');  
             $lista = Marca::where('id', "$id")->get();        
-            return  response()->json(view('Admin.partials.tabla_marcas', compact('lista'))->render());
+            return  response()->json(view('Admin.partials.tabla_marcas', compact('lista', 'id'))->render());
 
             
         }

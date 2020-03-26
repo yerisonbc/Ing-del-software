@@ -4,7 +4,7 @@
         @foreach ($lista as $marca)
 
         
-        <td>    <input id="id_udt"   type="text" class="form-control" name="id_udt" required   readonly value="{$marca->id}}">   </td>
+        <td>    <input id="id_udt"   type="text" class="form-control" name="id_udt" required   readonly value="{{$marca->id}}">   </td>
         <td>    <input id="marca_udt"   type="text" class="form-control" name="marca_udt" required autofocus maxlength="10"value="{{$marca->nombre}}"> </td>
         <td>    <input id="descripcion_udt" type="text" class="form-control" name="descripcion_udt"  value="{{$marca->descripcion}}">  </td>
         <td>    <input id="estado_udt"  type="text" class="form-control" name="estado_udt" readonly  value="{{$marca->estado}}">  </td>
@@ -49,19 +49,19 @@
             <tbody>
             @foreach ($lista as $marca)
 
-                <tr class="{{$marca->id}}">
+            <tr class="{{$marca->id}}">
                 
                     <td>{{$marca->id}}</td>
                     <td>{{$marca->nombre}}</td>
                     <td>{{$marca->descripcion}}</td>
                     <td>{{$marca->estado}}</td>
                     <td >
-                        <a id='edit' href='ud_marcas.php?id="{{$marca->id}}"'  class='btn btn-theme btn-xs '>
+                        <a id='edit' href='ud_marcas.php?id={{$marca->id}}'  class='btn btn-theme btn-xs '>
                             <i class='fas fa-edit'></i>
                         </a> 
 
                         @if( $marca->estado == 'A')
-                        <a  id='delete' class='btn btn-theme04 btn-xs '  href='ud_marcas.php?id="{{$marca->id}}' >
+                        <a  id='delete' class='btn btn-theme04 btn-xs '  href='ud_marcas.php?id={{$marca->id}}' >
                             <i class='far fa-trash-alt'></i>
                         </a>
                         @else

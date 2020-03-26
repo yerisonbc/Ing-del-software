@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/panel_admin.inicio';
+    protected $redirectTo = '/inicio_user';
 
     /**
      * Create a new controller instance.
@@ -66,6 +66,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'rol' => 'user',
             'password' => Hash::make($data['password']),
         ]);
     }
