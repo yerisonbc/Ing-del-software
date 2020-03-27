@@ -68,7 +68,7 @@
 
         @csrf 
         <input  id="id" type="text" class="form-control" name="id" required   readonly value="">   
-        <input  id="categoria"   type="text" class="form-control" name="marca" required autofocus maxlength="10"value=""> 
+        <input  id="nombre"   type="text" class="form-control" name="marca" required autofocus maxlength="10"value=""> 
         <input  id="descripcion"    type="text" class="form-control" name="descripcion"  value="">  
         <input  id="estado"   type="text" class="form-control" name="estado" readonly  value=""> 
 
@@ -118,7 +118,7 @@
                 e.preventDefault(); 
 
                 document.getElementById("id").value =         document.getElementById("id_udt").value;
-                document.getElementById("categoria").value =   document.getElementById("categoria_udt").value;
+                document.getElementById("nombre").value =   document.getElementById("marca_udt").value;
                 document.getElementById("descripcion").value = document.getElementById("descripcion_udt").value;
                 document.getElementById("estado").value =      document.getElementById("estado_udt").value;
 
@@ -133,10 +133,6 @@
                 document.getElementById("id_dlt").value = id;
                 alertDlt();
             });
-
-
-
-
 
 
 

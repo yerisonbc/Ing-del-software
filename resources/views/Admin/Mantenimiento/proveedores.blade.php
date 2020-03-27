@@ -58,7 +58,23 @@
     </div>
 
 
+    <form style=" visibility: hidden;" id='form_dlt' action="proveedor_delete" method="post">
+        @csrf 
+        <input type="text" name='id_dlt' id="id_dlt" value='5'> 
+    </form>
+   
+    <form style=" visibility: hidden;" id='form_udt' action="proveedor_update" method="post"> 
+
+        @csrf 
+        <input  id="id" type="text" class="form-control" name="id" required   readonly value="">   
+        <input  id="nombre"   type="text" class="form-control" name="nombre" required autofocus maxlength="10"value=""> 
+        <input  id="telefono"    type="text" class="form-control" name="telefono"  value="">  
+        <input  id="correo"   type="text" class="form-control" name="correo" readonly  value=""> 
+        <input  id="pagina_web"   type="text" class="form-control" name="pagina_web" readonly  value=""> 
        
+
+    </form>
+     
     
     
 
@@ -87,6 +103,36 @@
                 
                 timer = setTimeout(buscar, 1000);
             }
+
+            $(document).on('click', '#edit', function(e){ 
+
+                e.preventDefault();
+                var id = $(this).attr('href').split('id=')[1];  
+                editar(id);
+
+                    
+            });
+
+            $(document).on('click', '#udt_s', function(e){ 
+                e.preventDefault(); 
+
+                document.getElementById("id").value =         document.getElementById("id_udt").value;
+                document.getElementById("nombre").value =   document.getElementById("nombre_udt").value;
+                document.getElementById("telefono").value = document.getElementById("telefono_udt").value;
+                document.getElementById("correo").value =      document.getElementById("correo_udt").value;
+                document.getElementById("pagina_web").value =      document.getElementById("pagina_web_udt").value;
+
+                alertUdt();
+
+            });
+
+            $(document).on('click', '#delete', function(e){ 
+                e.preventDefault();  
+
+                var id = $(this).attr('href').split('id=')[1];
+                document.getElementById("id_dlt").value = id;
+                alertDlt();
+            });
 
            
         </script>

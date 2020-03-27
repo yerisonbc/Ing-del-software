@@ -86,7 +86,13 @@
                 
                 timer = setTimeout(buscar, 1000);
             }
+            $(document).ready(function(){
+                $('.venobox').venobox(); 
+            });
+            function v(){
+                $('.venobox').venobox(); 
 
+            }
            
         </script>
    @endsection

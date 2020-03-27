@@ -24,10 +24,9 @@
     <!-- ====================== Alertas ======================= -->
     <link rel="stylesheet" href="{{ asset('css/jquery-confirm.min.css') }}">
   
-    <!-- ====================== Iconos ========================================= -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    
     <!-- ==================================================================================  -->
+    <link rel="stylesheet" href="{{ asset('css/venobox.css') }}">
+    
     
     
 </head>
@@ -96,6 +95,7 @@
                 <li class="mt">
                     <a id='inicio' href="{{route('inicio')}}" class="">
                         <i class="fas fa-home"></i>
+                        <!-- <i class="fas fa-home"></i> -->
                         <span class="fntb" >Inicio</span>
                     </a>
                 </li>
@@ -108,10 +108,10 @@
                     <ul class="sub">
                     
                         <li><a href="{{ route('lista_productos') }}"> <i class="fas fa-mobile-alt"></i> Productos </a></li>
-                        <li><a href="#"> <i class="fas fa-boxes"></i> Nuevo Producto</a></li>
-                        <li><a href="{{route('lista_categorias')}}"> <i class="fas fa-shopping-basket"></i> Categoria</a></li>
-                        <li><a href="{{route('lista_marcas')}}"> <i class="fas fa-parachute-box"></i> Marcas</a></li>
-                        <li><a href="{{route('lista_proveedores')}}"> <i class="fas fa-truck"></i> Proveedores</a></li>
+                        <li><a href="{{ route('nuevo_producto') }}"> <i class="fas fa-boxes"></i> Nuevo Producto</a></li>
+                        <li><a href="{{ route('lista_categorias') }}"> <i class="fas fa-shopping-basket"></i> Categoria</a></li>
+                        <li><a href="{{ route('lista_marcas') }}"> <i class="fas fa-parachute-box"></i> Marcas</a></li>
+                        <li><a href="{{ route('lista_proveedores')}}"> <i class="fas fa-truck"></i> Proveedores</a></li>
                     </ul>
                 </li>
 
@@ -205,15 +205,14 @@
     <script src="{{ asset ('js/lib-navbar/common-scripts.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
+    <!-- ==================== alertas ===================================== -->
     <script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
 
+    <!-- ==================== Galeria======================== -->
+    <script src="{{ asset('js/venobox.min.js') }}"></script>
 
 
-    
-  
-  
-
-<script src="{{asset('js/my_scripts.js')}}"></script>
+    <script src="{{asset('js/my_scripts.js')}}"></script>
 
 @yield('scripts')
 </body>

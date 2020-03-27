@@ -40,11 +40,15 @@ Route::post('marca_delete', 'Admin\marcaController@delete')->name('marca_delete'
 Route::get('lista_proveedores', 'Admin\ProveedorController@show')->name('lista_proveedores');
 Route::get('nuevo_proveedor', 'Admin\ProveedorController@new')->name('nuevo_proveedor');
 Route::post('proveedor', 'Admin\ProveedorController@store');
+Route::post('proveedor_update', 'Admin\ProveedorController@update')->name('proveedor_update');
+Route::post('proveedor_delete', 'Admin\ProveedorController@delete')->name('proveedor_delete');
 
 
 Route::get('/lista_productos', 'Admin\productoController@show')->name('lista_productos');
 Route::get('/nuevo_producto', 'Admin\productoController@new')->name('nuevo_producto');
 Route::post('/producto', 'Admin\productoController@store')->name('producto');
+Route::post('producto_update', 'Admin\productoController@update')->name('producto_update');
+Route::post('producto_delete', 'Admin\productoController@delete')->name('producto_delete');
 // Auth::routes();
 
 Route::get('/l', function(){
@@ -64,7 +68,8 @@ Route::get('/rp', function(){
 // ============================= rutas usuarios ====================================
 
 Route::get('/inicio_user', 'User\usuarioController@index')->name('inicio_user');
+Route::get('/buscar', 'User\usuarioController@search')->name('buscar');
 Route::get('/iu', function(){
-    return view ('User.pp');
+    return view ('User.home');
     });
 

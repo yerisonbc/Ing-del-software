@@ -34,6 +34,17 @@
                 <td> {{$producto->id_categoria}}</td>
                 <td> {{$producto->id_proveedor}}</td>
                 <td> {{$producto->estado}}</td>
+                <td> 
+                    @for ( $i=0; $i < sizeof($producto->fotos); $i++) 
+                        @if($i === 0)
+                        <a class='venobox' onclick="v()" data-gall='gallery01' href='{{$producto->fotos[$i]->foto}}'> <img src='{{$producto->fotos[$i]->foto}}' height='30' width='30' alt='Foto'> </a>
+                        @else
+                        <a hidden class='venobox' onclick="v()" data-gall='gallery01' href='{{$producto->fotos[$i]->foto}}'> <img src='{{$producto->fotos[$i]->foto}}' height='30' width='30' alt='Foto'> </a>
+
+                        @endif 
+                    @endfor
+                </td>
+                
                 <td>  
                     <a  href="" class='btn btn-theme btn-xs'>
                         <i class='fas fa-edit'></i>
@@ -53,3 +64,14 @@
     <div class="card-footer">
     {{ $productos->links()  }}
     </div>
+
+<div>
+
+<h4>
+ 
+   {{sizeof($productos[0]->fotos)}}
+   <br>
+
+
+
+</div>

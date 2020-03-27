@@ -57,26 +57,23 @@ class ProductoController extends Controller
         $alert;
 
         try {
-            $user = auth()->user()->id;
 
+            $user = auth()->user()->id;
             $request['user_ins']= $user;
-            $request['user_udt']= $user;
             $request['estado']='A';
             
-            // Producto::create($request->all());
-            $img  = $request->file('img');
-            $producto= DB::table('productos')->select('id')->where('user_ins', '=', "1")->get()->last();
-            foreach ($img as $im)
-        {
-            
-            $p=$im->store('Productos');
-            $foto= ['id_producto'=>$producto->id, "foto"=>'storage/'.$p, "user_ins"=>'1', "user_udt"=>'1', "estado"=>'A'];
-            // dd($foto);
-            Fotos_Producto::create($foto);
-            $alert = 'success_ins';
-            
+            $producto = Producto::create($request->all());
 
-        }
+            $img  = $request->file('img');
+            
+            foreach ($img as $imagen)
+            {
+                $ruta = $imagen->store('Productos');
+                $datosFoto = ['id_producto'=>$producto->id, "foto"=>'storage/'.$ruta, "user_ins"=>$user, "estado"=>'A'];
+                Fotos_Producto::create($datosFoto);
+            
+            }
+            $alert="success_ins";
 
         } catch (\Exception $e) {
 
@@ -84,6 +81,6 @@ class ProductoController extends Controller
             
         }
 
-        return Redirect('lista_productos');
+        return Redirect('lista_productos')->with('status', $alert);
     }
 }

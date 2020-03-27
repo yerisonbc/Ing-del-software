@@ -1,3 +1,32 @@
+
+@if(isset($id))
+        
+        @foreach ($lista as $proveedor)
+
+        
+        <td>    <input id="id_udt"   type="text" class="form-control" name="id_udt" required   readonly value="{{$proveedor->id}}">   </td>
+        <td>    <input id="nombre_udt"   type="text" class="form-control" name="nombre_udt" required autofocus maxlength="10"value="{{$proveedor->nombre}}"> </td>
+        <td>    <input id="telefono_udt" type="text" class="form-control" name="telefono_udt"  value="{{$proveedor->telefono}}">  </td>
+        <td>    <input id="correo_udt"  type="text" class="form-control" name="correo_udt"  value="{{$proveedor->correo}}">  </td>
+        <td>    <input id="pagina_web_udt"  type="text" class="form-control" name="pagina_udt"  value="{{$proveedor->pagina_web}}">  </td>
+        <td>    <input id="pagina_web_udt"  type="text" class="form-control" name="pagina_udt" readonly  value="{{$proveedor->estado}}">  </td>
+        
+        <td >
+            <a id='udt_s' href='udt.php?id={{$proveedor->id}}'  class='btn btn-theme btn-xs '>
+                <i class="fas fa-check"></i>
+            </a>   
+
+            <a id='delete' class='btn btn-theme04 btn-xs dlt' href='ud_proveedors.php?id={{$proveedor->id}}' >
+                <i class='far fa-trash-alt'></i>
+            </a>
+            
+        </td>
+        
+
+        @endforeach
+
+@else
+
 <div class=" table-responsive">
            <table class="table table-striped" >
                 @if(isset($busqueda))
@@ -19,7 +48,7 @@
 
                 <tbody>
                 @foreach ($lista as $proveedor)
-                    <tr>
+                    <tr class="{{$proveedor->id}}">
                         <td>{{$proveedor->id}}</td>
                         <td>{{$proveedor->nombre}}</td>
                         <td>{{$proveedor->telefono}}</td>
@@ -27,10 +56,10 @@
                         <td>{{$proveedor->pagina_web}}</td>
                         <td>{{$proveedor->estado}}</td>
                         <td >
-                            <a href='udt_proveedor.php?id="{{$proveedor->id}}"'class='btn btn-theme btn-xs'>
+                            <a id="edit" href='udt_proveedor.php?id={{$proveedor->id}}' class='btn btn-theme btn-xs'>
                                 <i class='fas fa-edit'></i>
                             </a> 
-                            <a class='btn btn-theme04 btn-xs' href='udt_proveedor.php?id="{$proveedor->id}}"' >
+                            <a id="delete" class='btn btn-theme04 btn-xs' href='udt_proveedor.php?id={$proveedor->id}}' >
                                 <i class='far fa-trash-alt'></i>
                             </a>
                         </td>
@@ -46,4 +75,5 @@
             {{ $lista->links()  }}
         </div>
             
-          
+
+@endif

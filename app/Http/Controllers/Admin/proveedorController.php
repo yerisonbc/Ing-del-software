@@ -67,6 +67,15 @@ class proveedorController extends Controller
             return view('Admin.Mantenimiento.proveedores', compact('lista'));
             
         }
+        elseif($request->has('id')){
+
+            $id = $request->get('id');  
+            $lista = Proveedor::where('id', "$id")->get();        
+            return  response()->json(view('Admin.partials.tabla_proveedores', compact('lista', 'id'))->render());
+            // return $lista;
+            
+        }
+
 
 
         else          //      ver Todos los registros
@@ -81,6 +90,69 @@ class proveedorController extends Controller
 
 
         }
+    }
+
+    public function update(Request $request)
+    {
+        $alert;
+
+        try {
+                    // return $request;
+            $user = auth()->user()->id;
+            $id = $request->input('id');
+            $nombre = $request->input('nombre');
+            $telefono =  $request->input('telefono');
+            $correo =  $request->input('correo');
+            $pagina_web =  $request->input('pagina_web');
+            Proveedor::where('id', "$id")->update(['nombre'=>"$nombre", 'telefono'=> "$telefono", 'correo'=>"$correo", 'pagina_web'=>"$pagina_web", 'user_udt'=>"$user"]);
+            $alert = 'success_udt';
+            
+        } catch (\Exception $e) {
+            $alert = 'error_udt';
+        }
+    
+        return redirect('lista_proveedores')->with('status', $alert);
+        
+
+
+    }
+
+
+    public function delete(Request $request)
+    {
+        $alert;
+        $s;
+        $id = $request->input('id_dlt');
+
+       try {
+
+            $estado = Proveedor::where('id', "$id")->get('estado');
+
+            if ( $estado[0]->estado == 'A'  )
+             {
+                $s ='I'; 
+                $alert = 'success_dlt';
+
+            }
+            else
+            { 
+                $s ='A';
+                $alert = 'success_udt';
+
+            }
+
+            Proveedor::where('id', "$id")->update(['estado'=>"$s"]); 
+
+       } catch (\Exception $e)  {
+
+            $alert = 'Error_dlt';
+
+       }
+
+        return redirect('lista_proveedores')->with('status', $alert);
+
+
+
     }
 
 

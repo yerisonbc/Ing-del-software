@@ -93,7 +93,7 @@ class MarcaController extends Controller
             $id = $request->input('id');
             $marca = $request->input('marca');
             $descripcion =  $request->input('descripcion');
-            Categoria::where('id', "$id")->update(['marca'=>"$marca", 'descripcion'=> "$descripcion", 'user_udt'=>"$user"]);
+            Marca::where('id', "$id")->update(['nombre'=>"$marca", 'descripcion'=> "$descripcion", 'user_udt'=>"$user"]);
             $alert = 'success_udt';
             
         } catch (\Exception $e) {

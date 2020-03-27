@@ -105,8 +105,9 @@ nav>div>div>div>a>span {
 
 /* Make the image fully responsive */
 .carousel-item {
-    height: 600px;
+    height: 400px;
     min-height: 300px;
+    
     background: no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;

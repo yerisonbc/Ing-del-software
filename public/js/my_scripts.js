@@ -53,6 +53,8 @@ function pagination(p)
             datatype: 'json',
             success: function(data){
                 $(".users").html(data);
+                $('.venobox').venobox(); 
+                
             }
         });
     }

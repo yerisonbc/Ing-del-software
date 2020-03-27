@@ -29,7 +29,7 @@ class Producto extends Model
         return $this->belongsTo(Marca::class, 'id_proveedor');
     }
 
-    public function productos()
+    public function Fotos()
     {
         return $this->hasMany(Fotos_producto::class, 'id_producto');
     }

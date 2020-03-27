@@ -4,11 +4,24 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\controller;
+use App\Admin\Producto;
+
 
 
 class usuarioController extends Controller
 {
     public function index(){
-        return view("User.inicio");
+        return view("User.home");
+    }
+
+    public function search(Request $request){
+        
+        // $categoria = $request->input("categoria");
+        $busqueda = $request->input('busqueda');
+        $resultados = Producto::Search($busqueda, 'A')->get();
+
+        return view('User.resultado', compact('resultados', 'busqueda'));
+
+
     }
 }
