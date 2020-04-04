@@ -28,7 +28,6 @@
                         <div class="col-12 col-md-4  pt-2">
 
                             <select class="form-control"  id="filtro" onchange="search()" style="" name="">
-                                <!-- <option value="">Filtro</option> -->
                                 <option value="a">Activos</option>
                                 <option value="i">Inactivos</option>
                     

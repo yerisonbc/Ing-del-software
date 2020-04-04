@@ -22,6 +22,15 @@ class proveedorController extends Controller
 
     public function store(Request $request) //guardar un registro
     {
+
+        $request->validate([
+            'nombre' => 'required',
+            'correo' => 'max:50',
+            'telefono' => 'max:12|regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/',
+            'pagina_web' => 'max:50',
+
+            
+        ]);
         $alert;
         try {
 

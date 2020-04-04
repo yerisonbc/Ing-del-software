@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductoRequest;
 use App\Admin\Categoria;
 use App\Http\Controllers\controller;
 
@@ -68,24 +69,30 @@ class CategoriaController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'categoria' => 'required|max25',
+            'descripcion' => 'max:25',
+        ]);
         $alert;
 
         try {
 
+            $data = $request;
+
             $user = auth()->user()->id;
-            
             $request['user_ins'] = $user;
             $request['user_udt'] = $user;
             $request['estado'] = 'A';
-            Categoria::create($request->all());
+
+            
+
+            Categoria::create($data->all());
             $alert = 'success_ins';
             
             // return response()->json($request);
-            
-            
-            
         } catch (\Exception $e) {
             $alert = 'Error_ins';
+            // dd($e);
         }
         return redirect('lista_categorias')->with('status', $alert);
 

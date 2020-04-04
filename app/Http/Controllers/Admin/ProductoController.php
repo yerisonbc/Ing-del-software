@@ -6,6 +6,7 @@ use App\Http\Controllers\controller;
 use App\Admin\producto;
 use App\Admin\Fotos_producto;
 use Illuminate\Http\Request;
+use\App\Http\Requests\ProductoRequest;
 use Illuminate\Support\Facades\DB;
 
 
@@ -53,7 +54,7 @@ class ProductoController extends Controller
         return view("Admin.Form.reg_producto", compact('marcas', 'categorias', 'proveedores'));
     }
 
-    public function store(Request $request){
+    public function store(ProductoRequest $request){
         $alert;
 
         try {
@@ -83,4 +84,15 @@ class ProductoController extends Controller
 
         return Redirect('lista_productos')->with('status', $alert);
     }
+
+    public function gf(Request $request){
+
+        $img  = $request->file('file');
+        
+        $img->store("Productos");
+
+        
+        
+     
+   }
 }

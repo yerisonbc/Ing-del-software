@@ -38,6 +38,7 @@ class CreateProveedorTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('proveedor');
     }
 }

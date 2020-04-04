@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\controller;
 use App\Admin\Marca;
+use App\Http\Requests\ProductoRequest;
 
 
 use Illuminate\Http\Request;
@@ -24,6 +25,10 @@ class MarcaController extends Controller
     public function store(Request $request) //guardar un registro
     {
         $alert;
+         $request->validate([
+            'nombre' => 'required|max:25',
+            'descripcion' => 'max:25',
+            ]);
 
         try {
             
@@ -36,6 +41,7 @@ class MarcaController extends Controller
 
         } catch (\Exception $e) {
             $alert = 'Error_ins';
+
         }
        
         return Redirect('lista_marcas')->with('status', $alert);

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ __('Inicio') }}</title>
+    <title>{{Route::currentRouteName() }}</title>
 
     
     
@@ -27,14 +27,9 @@
     <!-- ==================================================================================  -->
     <link rel="stylesheet" href="{{ asset('css/venobox.css') }}">
     
-    
-    
+
+ 
 </head>
-<style>
-
-
-</style>
-
 
 <body>
     
@@ -109,6 +104,7 @@
                     
                         <li><a href="{{ route('lista_productos') }}"> <i class="fas fa-mobile-alt"></i> Productos </a></li>
                         <li><a href="{{ route('nuevo_producto') }}"> <i class="fas fa-boxes"></i> Nuevo Producto</a></li>
+                        <li><a href="{{ route('lista_modelos') }}"> <i class="fas fa-shopping-basket"></i> Modelos</a></li>
                         <li><a href="{{ route('lista_categorias') }}"> <i class="fas fa-shopping-basket"></i> Categoria</a></li>
                         <li><a href="{{ route('lista_marcas') }}"> <i class="fas fa-parachute-box"></i> Marcas</a></li>
                         <li><a href="{{ route('lista_proveedores')}}"> <i class="fas fa-truck"></i> Proveedores</a></li>
@@ -162,6 +158,8 @@
         <section id="main-content">
         
             <section class="wrapper">
+                <div id="app">
+                </div>
 
             <!-- -------------- alertas ---------------------- -->
             @include('Admin.Partials.alerts')

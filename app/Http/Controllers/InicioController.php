@@ -13,9 +13,10 @@ class InicioController extends Controller
     }
 
     
-    public function index()
+    public function index(Request $request)
     {
         $user = auth()->user();
+        $request->user()->authorizeRoles(['admin', 'user']);
         return view('admin.inicio', ['user' => auth()->user()]);
     }
 }

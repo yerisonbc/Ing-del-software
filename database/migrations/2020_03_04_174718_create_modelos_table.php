@@ -24,8 +24,8 @@ class CreateModelosTable extends Migration
             $table->char('estado',1);
 
             $table->foreign('id_marca')->references('id')->on('marcas');
-            $table->foreign('user_ins')->references('id_user')->on('perfil_usuarios');
-            $table->foreign('user_udt')->references('id_user')->on('perfil_usuarios');
+            $table->foreign('user_ins')->references('id_user')->on('perfil_usuarios')->onDelete('cascade');
+            $table->foreign('user_udt')->references('id_user')->on('perfil_usuarios')->onDelete('cascade');
 
         });
     }
@@ -37,6 +37,7 @@ class CreateModelosTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('modelos');
     }
 }

@@ -33,6 +33,7 @@ class CreatePerfilUsuarios extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('perfil_usuarios');
     }
 }
