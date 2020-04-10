@@ -26,11 +26,10 @@ class proveedorController extends Controller
         $request->validate([
             'nombre' => 'required',
             'correo' => 'max:50',
-            'telefono' => 'max:12|regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/',
             'pagina_web' => 'max:50',
-
-            
+    
         ]);
+        // 'telefono' => 'regex:/[0-9]{3}-[0-9]{3}-[0-9]{4}/|max:12|',
         $alert;
         try {
 

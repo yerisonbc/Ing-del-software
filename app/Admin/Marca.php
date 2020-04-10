@@ -3,10 +3,11 @@
 namespace App\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Admin\Marca;
 
 class Marca extends Model
 {
-    protected $fillable = ['nombre', 'descripcion', 'user_ins', 'user_udt', 'estado'];
+    protected $fillable = ['marca', 'descripcion', 'user_ins', 'user_udt', 'estado'];
 
     public function scopeSearch($query, $busqueda, $estado)
     {
@@ -21,9 +22,10 @@ class Marca extends Model
         
         return $query->where('estado',  "$busqueda");
     }
-    public function productos()
+    
+    public function modelo()
     {
-        return $this->hasMany(Producto::class, 'id_marca');
+        return $this->hasMany(Modelo::class, 'id_marca');
     }
 
 

@@ -24,14 +24,13 @@ class MarcaController extends Controller
 
     public function store(Request $request) //guardar un registro
     {
-        $alert;
-         $request->validate([
-            'nombre' => 'required|max:25',
+        $request->validate([
+            'marca' => 'required|max:25',
             'descripcion' => 'max:25',
             ]);
+        $alert;
 
         try {
-            
             $user = auth()->user()->id;
             $request['user_ins'] = $user;
             $request['user_udt'] = $user;

@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="css/dropzone.min.css" />
+
 @extends('admin.layouts.app')
 
 @section('content')
@@ -27,7 +27,7 @@
             <div class="card p-3">
                 <h2 class="titulo text-center ">Agregar un producto a la tienda</h2> 
 
-                <form action="{{route('producto')}}"  class="dropzone" enctype="multipart/form-data"  method="POST" >
+                <form action="{{route('producto')}}"  enctype="multipart/form-data"  method="POST" >
                     @csrf
                     
                         <div class="container">
@@ -50,19 +50,16 @@
 
                                 <div class="col-xs-12 col-sm-6 col-md-4">
                                     <div class="form-group ">
-                                        <label class="control-label">Marca<span style="color:red">*</span></label>
-                                        <select name="id_marca"  class="form-control" >
-                                            @foreach ($marcas as $marca)
-                                            <option value="{{$marca->id}}" >{{$marca->nombre}} </option>
-                                            @endforeach
-                                        </select>        
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <div class="form-group ">
                                         <label class="control-label">Modelo<span style="color:red">*</span></label>
-                                        <input type="text" class="form-control" value="1"  name="id_modelo">
+                                        <select name="id_modelo" class="form-control">
+                                        @foreach($modelos as $modelo)   
+                                            @if($modelo->id == old('id_modelo'))
+                                                <option value="{{$modelo->id}}" selected >{{$modelo->modelo}}</option>
+                                            @else
+                                                <option value="{{$modelo->id}}">{{$modelo->modelo}}</option>
+                                            @endif
+                                        @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
@@ -80,6 +77,19 @@
                                     <div class="form-group label-floating">
                                         <label class="control-label">Unidades disponibles <span style="color:red">*</span></label>
                                         <input type="number" class="form-control @error('cantidad') is-invalid @enderror"  maxlength="20" name="cantidad">
+                                    </div>
+                                    @error('cantidad')
+                                        <p class="text-danger"> {{ $message}} </p> 
+                                    @enderror
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Condicion<span style="color:red">*</span></label>
+                                            <select name="condicion" class="form-control">
+                                                <option value="Nuevo"> Nuevo</option>
+                                                <option value="Usado"> Usado</option>
+                                            </select>
+                                        
                                     </div>
                                     @error('cantidad')
                                         <p class="text-danger"> {{ $message}} </p> 
@@ -108,13 +118,10 @@
                                 <div class="col-xs-12 col-sm-6 col-md-4">
                                     <div class="form-group">
                                         <label>Categoría<span style="color:red">*</span></label>
-                                        <select class="form-control" name="id_categoria"   >
-
-                                            @foreach ($categorias as $categoria)
-                                                <option value="{{$categoria->id}}">{{$categoria->categoria}}</option>
-                                            @endforeach
-
+                                        <select name="" id="categoria" class="form-control" readonly>
+                                        <option value="">prueva</option>
                                         </select>
+                                        
                                     </div>
                                 </div>
 
@@ -144,40 +151,14 @@
                                 <!-- <div class="form-group">
                                     <!- <input type="text" class="lb" placeholder="Selecione la imagen del producto" readonly="" class="form-control">  --> 
                                         <input id="a" type="file"  name="img[]"   accept="image/*" class="up" multiple="">  
-                                </div> -->
-                                <div class="fallback">
-                                    <input type="file" name="file" />
-                                </div>
-                                
+                                </div> 
+                               
 
 
                         </div>
                     <!-- <input type="hidden"  name="admin-name" value="admin"> -->
                         <p class="text-center"><button type="submit" class="btn  btn-theme">Agregar a la tienda</button></p>
-<!-- ================================================================================================================================================ -->
-                <!-- <div class="d-flex justify-content-center">
-                    <div class="form-group ">
-                        <div class="col-md-9">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-
-                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" alt="" />
-                                </div>
-                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-                                    <div>
-                                        <span class="btn btn-theme btn-file">
-                                            <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select image</span>
-                                            <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                            <input type="file" class="default"  multiple/>
-                                        </span>
-                                        <a href="advanced_form_components.html#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+<!-
 
 
 
@@ -192,5 +173,17 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript" src="css/dropzone.min.js"></script>
+
+<script>
+
+function CategoriaText(){
+
+var categoriaText = document.getElementById('id_categoria').options[id_categoria.selectedIndex].innerText;
+document.getElementById('categoria').textContent = marcaText
+
+
+
+
+</script>
+
 @endsection

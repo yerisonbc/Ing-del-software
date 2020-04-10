@@ -39,13 +39,12 @@ class CategoriaController extends Controller
             }
             
             return view('Admin.Mantenimiento.categoria', compact('lista'));
+
         }
         elseif($request->has('id')){
 
             $id = $request->get('id');
-            
             $lista = Categoria::where('id',"$id")->get();
-
             return  response()->json(view('Admin.partials.tabla_categoria', compact('lista', 'id'))->render());
             
 
@@ -55,13 +54,11 @@ class CategoriaController extends Controller
         {
 
             $lista = Categoria::where('estado','a')->Paginate(5);
-          
             if($request->ajax()){
                 return  response()->json(view('Admin.partials.tabla_categoria', compact('lista'))->render());
             }
             return view('Admin.Mantenimiento.categoria', compact('lista'));
 
-                //    return response()->json($lista_categoria);
 
         }
 
@@ -70,15 +67,14 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'categoria' => 'required|max25',
+            'categoria' => 'required|max:25',
             'descripcion' => 'max:25',
         ]);
-        $alert;
-
         try {
+            
+            $alert;
 
             $data = $request;
-
             $user = auth()->user()->id;
             $request['user_ins'] = $user;
             $request['user_udt'] = $user;

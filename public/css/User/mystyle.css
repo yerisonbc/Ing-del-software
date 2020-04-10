@@ -11,7 +11,7 @@ body{
     background-color: white;
 }
 
-nav>div>div>div>a{
+.navb-a{
     display: block;
     position: relative;
     width: 90px;
@@ -22,28 +22,24 @@ nav>div>div>div>a{
     color:  #4ecdc4;
 }
 
-nav>div>div>div>a>i {
+nav>div>div>div>div>a>i {
     display: block;
     font-size: 18px;
 }
-nav>div>div>div>a>span {
+nav>div>div>div>div>a>span {
     display: block;
     
 }
 
 .prepend{
  
-    border-radius: 40px 0px 0px 40px;
+    border-radius: 5px 0px 0px 5px;
 }
 .append{
-    border-radius: 0px 40px 40px 0px;
+    border-radius: 0px 5px 5px 0px;
     
 }
 
-.form-control{
-    height: 50px;
-    width: 10px;
-}
 
 
 #navigation{
@@ -115,4 +111,48 @@ nav>div>div>div>a>span {
     background-size: cover;
   }
   
+  /* ======================== circulos de Categoria ================================ */
+
+  h3.sub{
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  }
+
+
+
+
+  .owl-stage-outer {
+    padding-left: 15px;
+}
+.owl-stage {
+    align-content: center;
+    padding-bottom: 50px;
+}
   
+.owl-carousel .owl-dots.disabled, .owl-carousel  {
+    display: block; 
+}
+
+
+
+a.logo {
+    font-size: 24px;
+    color: #f2f2f2;
+    float: left;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+    outline: none;
+}
+a.logo span {
+    color: #4ECDC4;
+    
+}

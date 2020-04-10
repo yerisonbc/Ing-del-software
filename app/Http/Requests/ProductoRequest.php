@@ -25,12 +25,12 @@ class ProductoRequest extends FormRequest
     {
         return [
             'producto' => 'required|max:25',
-            'id_marca' => 'required',
+            
             'id_modelo' => 'required',
             'precio' => 'required',
             'cantidad' => 'required',
             'caracteristica' => '',
-            'categoria' => 'required',
+            
             'id_proveedor' => 'required',
             'img' => 'required',
             

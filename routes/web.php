@@ -10,9 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('login.login');
-});
+// Route::get('/', function () {
+//     return view('login.login');
+// });
+Route::get('/', 'User\usuarioController@index');
+
 
 Auth::routes();
 
@@ -58,8 +60,12 @@ Route::post('producto_delete', 'Admin\productoController@delete')->name('product
 // =======================================================================
 
 
-// ========================= Productos ===================================
-Route::get('lista_modelos', 'Admin\productoController@show')->name('lista_modelos');
+// ========================= Modelos ===================================
+Route::get('lista_modelos', 'Admin\modeloController@show')->name('lista_modelos');
+Route::get('nuevo_modelo', 'Admin\modeloController@new')->name('nuevo_modelo');
+Route::post('modelo', 'Admin\modeloController@store')->name('modelo');
+Route::post('modelo_update', 'Admin\modeloController@update')->name('modelo_update');
+Route::post('modelo_delete', 'Admin\modeloController@delete')->name('modelo_delete');
 
 // =======================================================================
 
@@ -68,9 +74,7 @@ Route::get('lista_modelos', 'Admin\productoController@show')->name('lista_modelo
 
 // Auth::routes();
 
-Route::get('/login', function(){
-return view('login.login');
-})->name('login');
+
 
 Route::get('/lr', function(){
 return view('Auth.login');
@@ -103,5 +107,8 @@ Route::get('/inicio_user', 'User\usuarioController@index')->name('inicio_user');
 Route::get('/buscar', 'User\usuarioController@search')->name('buscar');
 Route::get('/iu', function(){
     return view ('User.home');
+    });
+Route::get('/sl', function(){
+    return view ('User.slide');
     });
 

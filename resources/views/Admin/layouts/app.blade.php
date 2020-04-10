@@ -83,7 +83,7 @@
 
             <ul class="sidebar-menu  " id="nav-accordion">
 
-                <h3 class=" pt-3 pb-3 text-center"> HOLA {{ auth()->user()->name }}</h3>
+                <h3 class=" pt-3 pb-3 text-center"> HOLA {{ auth()->user()->id }}</h3>
        
 
                 <!-- BTN inicio -->

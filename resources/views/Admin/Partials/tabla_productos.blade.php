@@ -35,11 +35,12 @@
                 <td> {{$producto->id_proveedor}}</td>
                 <td> {{$producto->estado}}</td>
                 <td> 
-                    @foreach($producto->fotos as $foto)
-                        
-                        <a class='venobox'data-gall='gallery01' href='{{$foto}}'> <img src='{{$foto}}' height='30' width='30' alt='Foto'> </a>
-                        
-                        <!-- <a hidden class='venobox'  data-gall='gallery01' href='{{$foto}}'> <img src='{{$fotos[$i]}}' height='30' width='30' alt='Foto'> </a> -->
+                    @foreach($producto->fotos as $i=>$foto)
+                        @if($i == 0)
+                        <a class='venobox'data-gall='gallery01' href='{{$foto->foto}}'> <img src='{{$foto->foto}}' height='30px' width='30px' alt='Foto'> </a>
+                        @else
+                        <a class='venobox'data-gall='gallery01' href='{{$foto->foto}}' hidden> <img src='{{$foto->foto}}' height='30px' width='30px' alt='Foto'> </a>
+                        @endif
 
                        
                     @endforeach

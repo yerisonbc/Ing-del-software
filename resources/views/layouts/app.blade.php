@@ -18,6 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('css/User/slick.css')}}"/>
+ <!-- Add the new slick-theme.css if you want the default styling -->
+<link rel="stylesheet" type="text/css" href="{{asset('css/User/slick-theme.css')}}"/>
+
+
 </head>
 <body>
     <div id="app">

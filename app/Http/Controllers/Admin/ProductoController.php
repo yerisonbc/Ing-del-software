@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\controller;
 use App\Admin\producto;
+use App\Admin\modelo;
 use App\Admin\Fotos_producto;
 use Illuminate\Http\Request;
 use\App\Http\Requests\ProductoRequest;
@@ -48,16 +49,16 @@ class ProductoController extends Controller
 
     public function new()
     {
-        $marcas = DB::table('marcas')->select('*')->where('estado', '=', 'a')->get();
+        $modelos = Modelo::where('estado', '=', 'a')->get();
         $categorias = DB::table('categorias')->select('*')->where('estado', '=', 'a')->get();
         $proveedores = DB::table('proveedor')->select('*')->where('estado', '=', 'a')->get();
-        return view("Admin.Form.reg_producto", compact('marcas', 'categorias', 'proveedores'));
+        return view("Admin.Form.reg_producto", compact('modelos', 'categorias', 'proveedores'));
     }
 
     public function store(ProductoRequest $request){
         $alert;
 
-        try {
+        // try {
 
             $user = auth()->user()->id;
             $request['user_ins']= $user;
@@ -76,11 +77,11 @@ class ProductoController extends Controller
             }
             $alert="success_ins";
 
-        } catch (\Exception $e) {
+        // } catch (\Exception $e) {
 
             $alert = 'Error_ins';
             
-        }
+        // }
 
         return Redirect('lista_productos')->with('status', $alert);
     }

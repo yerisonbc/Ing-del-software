@@ -3,6 +3,7 @@
 namespace App\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Admin\Modelo;
 
 class categoria extends Model
 {
@@ -20,6 +21,10 @@ class categoria extends Model
     public function productos()
     {
         return $this->hasMany(Producto::class, 'id_categoria');
+    }
+    public function modelo ()
+    {
+        return $this->hasMany(Modelo::class, 'id_categoria');
     }
 
 }

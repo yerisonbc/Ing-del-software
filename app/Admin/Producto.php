@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     protected $fillable = ['producto', 'caracteristica', 'precio', 'cantidad', 'id_marca', 
-    'id_modelo', 'id_categoria', 'id_proveedor', 'user_ins', 'user_udt', 'estado'];
+    'id_modelo', 'id_categoria', 'id_proveedor', 'user_ins', 'user_udt', 'estado', 'condicion'];
 
 
     public function scopeSearch($query, $busqueda, $estado)

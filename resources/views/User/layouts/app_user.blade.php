@@ -6,22 +6,17 @@
     <title>Inicio</title>
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
- 		<link type="text/css" rel="stylesheet" href="css/User/style.css"/>
+
+ 	<link type="text/css" rel="stylesheet" href="css/User/style.css"/>
+    
+    <!-- Google font -->
+ 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <!-- ============================ productos Carousel ===================== -->
+    <link rel="stylesheet" href="css/User/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/User/owl.theme.default.min.css"> 
+    <!-- ===================================================================== -->
 
     <link rel="stylesheet" href="{{asset('css/User/mystyle.css')}}">
- 	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="{{asset('css/User/slick.css')}}">
-    <link type="text/css" rel="stylesheet" href="{{asset('css/User/slick-theme.css')}}">
-    <link type="text/css" rel="stylesheet" href="{{asset('css/User/nouislider.min.css')}}">
-     
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-    <script src="{{ asset('/js/lib-navbar/jquery-3.4.1.min.js') }}"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
-    <script src=" {{ asset('js/app.js') }}" ></script>
-
-     
  
 </head>
 <body>
@@ -29,66 +24,78 @@
 <!-- ========================================== nav bar ================================================= -->
   <header>
       <nav class="navbar navbar-expand-lg navbar-dark">
+          <div class="container-fluid">
 
-          <a class="navbar-brand collapse navbar-collapse" id="navbarSupportedContent"  href="inicio_user">LOGO</a>
-          <div class="col-1">
-            <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-          </div>
-          <div class="container">
+                <div class="col-3">
+                    <!-- <a class="navbar-brand collapse navbar-collapse navb" id="navbarSupportedContent"  href="inicio_user">LOGO</a> -->
+                    <a href="index.html" class="logo"><b>Tecno<span>SHOP</span></b></a>
 
-              <div class=" collapse navbar-collapse" id="navbarSupportedContent">
-                  <div class="">
-                    <a href="user.php">
-                      <i class="far fa-user"></i>
-                      <span>Hola Yerison Brito</span>		
-                    </a>
-                  </div>
-              </div>
+                        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    
 
-              <div class="col-6">
-
-                  <form id="form_buscar" nombre='search' action="buscar" method="get">'
-                      <div class="input-group">
-
-                          <div class="input-group-prepend">
-                              <select name="" id="" class="prepend">
-                                  <option value="">Celulares</option>
-                                  <option value="">Computadoras</option>
-                              </select>
-                          </div>
-
-                          <input class="form-control" name="busqueda" type="search" placeholder="Search" aria-label="Search">
-                          <div class="input-group-append">
-                              <button class=" btn btn-search  append" type="submit">Search</button>
-                          </div>
-
-                      </div>
-                  </form>
-
-              </div > 
-
-              <div class=" collapse navbar-collapse" id="navbarSupportedContent">
-
-                <div>
-                  <a href="{{route('l')}}">
-                    <i class="fas fa-sign-in-alt"></i>
-                    <span >iniciar seccion</span>		
-                  </a>
-                </div>
-                <span style="color:#FFF">O</span>
-
-                <div>
-                  <a href="#">
-                    <i class="fas fa-user-plus"></i>
-                    <span>Registrate</span>
-                      
-                  </a>
+                    <div class=" collapse navbar-collapse col-md-2" id="navbarSupportedContent">
+                        @guest
+                        @else
+                            <div class="">
+                                <a href="user.php" class="navb-a">
+                                <i class="far fa-user"></i>
+                                <span>Hola Yerison Brito</span>		
+                                </a>
+                            </div>
+                        @endguest
+                    </div>
                 </div>
 
-              </div>
+                <div class="col-6 pb-2">
+                    <form id="form_buscar" nombre='search' action="buscar" method="get">'
+                        <div class="input-group">
 
+                            <div class="input-group-prepend">
+                                <select name="" id="" class="prepend" style=" background:#F7FFF7; >
+                                    <option value="">Celulares</option>
+                                    <option value="">Computadoras</option>
+                                </select>
+                            </div>
+
+                            <input class="form-control" name="busqueda" type="search" placeholder="Buscar" aria-label="Search">
+                            <div class="input-group-append">
+                                <button stule=''class=" btn btn-search  append" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div > 
+
+                <div class="col-3">
+                    <div class=" collapse navbar-collapse" id="navbarSupportedContent">
+                        @guest
+                            <div>
+                                <a href="{{route('login')}}" class="navb-a">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    <span >Iniciar Seción</span>		
+                                </a>
+                            </div>
+                            <span style="color:#FFF">O</span>
+                            <div>
+                                <a href="#" class="navb-a">
+                                    <i class="fas fa-user-plus"></i>
+                                    <span>Registrate</span>
+                                </a>
+                            </div>
+                        @else
+                            <div>
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="navb-a">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    <span >Cerrar Seción</span>		
+                                </a>
+                            </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
+                        @endguest
+            
+                    </div>
+                </div>
+              
           
           </div>
 
@@ -100,10 +107,10 @@
 				<!-- <div id="responsive-nav"> -->
 
 					<ul class="nav ">
-						<li class="nav-item"> <a class=" nav-link" href="inicio.php">Inicio</a></li>
-            <li class="nav-item"> <a class=" nav-link" href="buscar.php?categoria=14">Celulares</a></li>
-            <li class="nav-item"> <a class=" nav-link" href="buscar.php?categoria=18">Accessorios</a></li>
-            <li class="nav-item"> <a class=" nav-link" href="#">Reparaciones</a></li>
+						<li class="nav-item active"> <a class=" nav-link" href="inicio.php">Inicio</a></li>
+                        <li class="nav-item"> <a class=" nav-link" href="buscar.php?categoria=14">Celulares</a></li>
+                        <li class="nav-item"> <a class=" nav-link" href="buscar.php?categoria=18">Accessorios</a></li>
+                        <li class="nav-item"> <a class=" nav-link" href="#">Reparaciones</a></li>
 					</ul>
 
 				<!-- </div> -->
@@ -201,19 +208,17 @@
                 </div>
                 <!-- /row -->
             </div>
-            <!-- /container -->
+            
         </div>
-        <!-- /bottom footer -->
+     
     </footer>
-    <!-- /FOOTER -->
+    
+    
+    
+    <script src=" {{ asset('js/app.js') }}" ></script>
+    <script src=" {{ asset('js/User/owl.carousel.min.js') }}" ></script>
 
-    <!-- jQuery Plugins -->
-    <!-- <script src="js/jquery.min.js"></script> -->
-    <!-- <script src="js/bootstrap.min.js"></script> -->
-    <!-- <script src="js/slick.min.js"></script> -->
-    <!-- <script src="js/nouislider.min.js"></script> -->
-    <!-- <script src="js/jquery.zoom.min.js"></script> -->
-    <!-- <script src="js/main.js"></script> -->
+  @yield('sc')
 
 </body>
 

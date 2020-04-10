@@ -14,12 +14,13 @@ class CreatePerfilUsuarios extends Migration
     public function up()
     {
         Schema::create('perfil_usuarios', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_user');
+           
             $table->primary("id_user");
-            $table->string('nombre', 25);
-            $table->string('apellido', 25);
-            $table->string('direccion', 50)->nulleble();
-            $table->string('telefono', 50)->nulleble();
+            $table->unsignedBigInteger('id_user');
+            $table->string('nombre', 25)->nullable();
+            $table->string('apellido', 25)->nullable();
+            $table->string('direccion', 50)->nullable();
+            $table->string('telefono', 50)->nullable();
             $table->timestamps();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
     

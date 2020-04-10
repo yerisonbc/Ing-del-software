@@ -31,10 +31,10 @@
                 <div class="row p-3">
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
-                            <label for="">Nombre <span style="color:red">*</span> </label>
-                            <input type="text" class="form-control @error('nombre') is-invalid @enderror" value="{{old('nombre')}}" name="nombre"  autofocus >
+                            <label for="">Marca <span style="color:red">*</span> </label>
+                            <input type="text" class="form-control @error('marca') is-invalid @enderror" value="{{old('marca')}}" name="marca"  autofocus >
                         </div>
-                        @error('nombre')
+                        @error('marca')
                             <p class="text-danger"> {{ $message}} </p> 
                         @enderror
                     </div>
