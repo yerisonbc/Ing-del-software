@@ -11,7 +11,9 @@ use App\Admin\Producto;
 class usuarioController extends Controller
 {
     public function index(){
-        return view("User.home");
+        $nuevosProductos = Producto::latest()->take(5)->get();
+        // return $nuevosProductos;
+        return view("User.home", compact('nuevosProductos'));
     }
 
     public function search(Request $request){
@@ -19,7 +21,6 @@ class usuarioController extends Controller
         // $categoria = $request->input("categoria");
         $busqueda = $request->input('busqueda');
         $resultados = Producto::Search($busqueda, 'A')->get();
-
         return view('User.resultado', compact('resultados', 'busqueda'));
 
 

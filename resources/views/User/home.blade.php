@@ -125,7 +125,7 @@
       <!---------------- Titulo-------------->
       <div class="col-md-12">
         <div class="section-title">
-          <h3>Nuevos Productos</h3>
+          <h3>Productos</h3>
           <hr>
         </div>
       </div>
@@ -267,6 +267,76 @@
     </div>
   <!-- </div>  -->
 </div>
+  
+
+<!-- ============================================================================= -->
+<div class="section">
+
+  <div class="container-fluid">
+    <div class="col-md-12">
+        <div class="section-title">
+          <h3>Nuevos Productos</h3>
+          <hr>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+        <div class=" nuevos-productos owl-carousel owl-theme" style="padding-bottom: 50px;">
+
+          <!-- =========================== Produtos ======================================-->
+          @foreach($nuevosProductos as $producto)
+            <div class=" item" style="">
+                    <div class="product" >
+                        <div>
+                            <div class="product-img">
+                                <img src="{{$producto->fotos[0]->foto}}" alt="">
+                                <div class="product-label">
+                                  <span class="new">Nuevo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-body">
+                            <p class="product-category">{{$producto->modelo->categoria->categoria}}</p>
+                            <h3 class="product-price">{{$producto->modelo->modelo}}</h3>
+                            <h5 class="product-name">RD$ {{$producto->precio}}</h5>
+
+                            <div class="product-btns">
+                              <button class="btn add-to-compare">
+                                <a class="" href="" onclick=" addToCar({{$producto->id}}) ">
+                                  <i class="fa fa-shopping-cart"></i> </i>
+                                  <span class="tooltipp">Agregar al carrito</span>
+                                </a>
+                              </button>
+                              <button class="btn add-to-compare">
+                                <a class=""href="">
+                                  <i class="fas fa-heart"></i>
+                                  <span class="tooltipp">Agregar a Favorito</span>
+                                </a>
+                              </button>
+
+                            </div>
+                        </div>
+                        <div class="add-to-cart">
+                          <a class="btn add-to-cart-btn">
+                            <i class="fa fa-shopping-cart"></i>
+                            Comprar
+                          </a>
+                        </div>
+                    </div>
+              </div>
+              <form action="ANa" method="post"></form>
+              <form action="" method="post"></form>
+            @endforeach
+        </div>
+        <!-- Carousel End -->
+
+      
+
+    </div>
+  <!-- </div>  -->
+</div>
 
 
 @endsection
@@ -282,7 +352,7 @@
         items:2,
         margin:15,
         autoplay:true,
-        autoplayTimeout:1000,
+        autoplayTimeout:3000,
         autoplayHoverPause:true,
         
         
@@ -312,6 +382,7 @@
         loop:true,
         items:2,
         margin:15,
+        autoplayTimeout:1000,
        
         
         responsive:{
@@ -337,6 +408,12 @@
       
 });
 </script>
-
+<script>
+  function addToCar(e) {
+    e.preventDefault();
+    
+// console.log(id);
+  }
+</script>
 
 @endsection

@@ -27,11 +27,11 @@
             <tr>
                 <td> {{$producto->id}}</td>
                 <td> {{$producto->producto}}</td>
-                <td> {{$producto->id_modelo}}</td>
-                <td> {{$producto->caracteristicas}}</td>
+                <td> {{$producto->modelo->modelo}}</td>
+                <td> {{$producto->caracteristica}}</td>
                 <td> {{$producto->cantidad}}</td>
                 <td> {{$producto->precio}}</td>
-                <td> {{$producto->id_categoria}}</td>
+                <td> {{$producto->modelo->categoria->categoria}}</td>
                 <td> {{$producto->id_proveedor}}</td>
                 <td> {{$producto->estado}}</td>
                 <td> 

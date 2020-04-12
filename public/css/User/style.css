@@ -907,7 +907,7 @@ textarea.input {
     box-shadow: 0px 0px 0px 0px #E4E7ED, 0px 0px 0px 1px #E4E7ED;
     -webkit-transition: 0.2s all;
     transition: 0.2s all;
-    /* width:200px; */
+    /* width:200px;btn */
 }
 
 .product:hover {
@@ -1094,7 +1094,8 @@ textarea.input {
     border: 2px solid transparent;
     height: 40px;
     padding: 0 30px;
-    background-color: #ef233c;
+    background-color: #4ecdc4;
+    /* background-color: #ef233c; */
     color: #FFF;
     text-transform: uppercase;
     font-weight: 700;

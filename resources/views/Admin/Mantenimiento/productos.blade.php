@@ -73,7 +73,7 @@
             var timer;
 
             $(document).on('click', '.pagination a', function(e){
-                    e.preventDefault();
+                    
                     var p = $(this).attr('href').split('page=')[1];
                     pagination(p);         
 

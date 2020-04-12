@@ -108,7 +108,13 @@ Route::get('/buscar', 'User\usuarioController@search')->name('buscar');
 Route::get('/iu', function(){
     return view ('User.home');
     });
-Route::get('/sl', function(){
-    return view ('User.slide');
+Route::get('/ver_productos', function(){
+    return view ('User.producto');
     });
+Route::get('/pre', function(){
+    return view ('Admin.Form.productos');
+    });
+
+Route::get('/cuenta/carro', 'User\cuentaUserController@carroCompras')->name('carro');
+
 

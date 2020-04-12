@@ -488,3 +488,10 @@ legend{
         border-radius: 3px;
     }
 }
+
+
+/*             Preview y edit Productos                 */
+
+.form-producto{
+    border: none;
+}

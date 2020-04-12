@@ -58,7 +58,7 @@ class ProductoController extends Controller
     public function store(ProductoRequest $request){
         $alert;
 
-        // try {
+        try {
 
             $user = auth()->user()->id;
             $request['user_ins']= $user;
@@ -77,23 +77,14 @@ class ProductoController extends Controller
             }
             $alert="success_ins";
 
-        // } catch (\Exception $e) {
+        } catch (\Exception $e) {
 
             $alert = 'Error_ins';
             
-        // }
+        }
 
         return Redirect('lista_productos')->with('status', $alert);
     }
 
-    public function gf(Request $request){
 
-        $img  = $request->file('file');
-        
-        $img->store("Productos");
-
-        
-        
-     
-   }
 }

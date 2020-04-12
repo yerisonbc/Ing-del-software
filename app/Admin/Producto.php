@@ -28,7 +28,9 @@ class Producto extends Model
     public function proveedor(){
         return $this->belongsTo(Marca::class, 'id_proveedor');
     }
-
+    public function modelo(){
+        return $this->hasOne(Modelo::class, 'id');
+    }
     public function Fotos()
     {
         return $this->hasMany(Fotos_producto::class, 'id_producto');
