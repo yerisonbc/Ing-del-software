@@ -304,7 +304,7 @@
 
                             <div class="product-btns">
                               <button class="btn add-to-compare">
-                                <a class="" href="" onclick=" addToCar({{$producto->id}}) ">
+                                <a class="" href="" >
                                   <i class="fa fa-shopping-cart"></i> </i>
                                   <span class="tooltipp">Agregar al carrito</span>
                                 </a>
@@ -326,8 +326,7 @@
                         </div>
                     </div>
               </div>
-              <form action="ANa" method="post"></form>
-              <form action="" method="post"></form>
+
             @endforeach
         </div>
         <!-- Carousel End -->
@@ -408,12 +407,6 @@
       
 });
 </script>
-<script>
-  function addToCar(e) {
-    e.preventDefault();
-    
-// console.log(id);
-  }
-</script>
+
 
 @endsection
