@@ -63,27 +63,65 @@ class ProductoController extends Controller
             $user = auth()->user()->id;
             $request['user_ins']= $user;
             $request['estado']='A';
-            
+        
             $producto = Producto::create($request->all());
+            $id_producto = $producto->id;
 
             $img  = $request->file('img');
             
             foreach ($img as $imagen)
             {
                 $ruta = $imagen->store('Productos');
-                $datosFoto = ['id_producto'=>$producto->id, "foto"=>'storage/'.$ruta, "user_ins"=>$user, "estado"=>'A'];
+                $datosFoto = ['id_producto'=>$id_producto, "foto"=>'storage/'.$ruta, "user_ins"=>$user, "estado"=>'A'];
                 Fotos_Producto::create($datosFoto);
             
             }
             $alert="success_ins";
+            return Redirect("productos/preview/$id_producto");
 
         } catch (\Exception $e) {
 
             $alert = 'Error_ins';
+            return Redirect('lista_productos')->with('status', $alert);
             
         }
+    }
 
-        return Redirect('lista_productos')->with('status', $alert);
+    public function update(ProductoRequest $request){
+        $alert;
+
+        // try {
+
+            $user = auth()->user()->id;
+            $request['user_udt']= $user;
+            $request['estado']='A';
+            $id = $request->input['id'];
+        
+            if($producto = Producto::where('id',"$id")->update([
+                    'producto'=>        $request->input['producto'],
+                    'titulo'=>          $request->input['titulo'],
+                    'cantidad'=>        $request->input['cantidad'],
+                    'precio'=>          $request->input['precio'],
+                    'id_categoria'=>    $request->input['id_categoria'],
+                    'id_modelo'=>       $request->input['id_modelo'],
+                    'id_proveedor'=>    $request->input['id_proveedor'],
+                
+                    ])){
+                        echo'yes';
+                } else {
+                $alert = 'Error_udt';
+                return Redirect('lista_productos')->with('status', $alert);
+            }
+
+            
+            
+        // } catch (\Exception $e) {
+
+            
+            // 
+            
+        // }
+
     }
 
 

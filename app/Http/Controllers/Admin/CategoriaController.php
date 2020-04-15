@@ -70,6 +70,7 @@ class CategoriaController extends Controller
             'categoria' => 'required|max:25',
             'descripcion' => 'max:25',
         ]);
+
         try {
             
             $alert;

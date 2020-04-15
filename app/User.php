@@ -5,6 +5,8 @@ use App\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Admin\Perfil_Usuario;
+
 
 class User extends Authenticatable
 {
@@ -69,5 +71,8 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+    public function perfil_Usuario(){
+        return $this->hasOne(perfil_Usuario::class, 'id_user');
     }
 }

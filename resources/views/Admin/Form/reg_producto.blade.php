@@ -1,6 +1,17 @@
 
 @extends('admin.layouts.app')
 
+
+@section('styles')
+   <!-- ============================ productos Carousel ===================== -->
+    <link rel="stylesheet" href="{{asset('css/User/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/User/owl.theme.default.min.css')}}"> 
+    <!-- ===================================================================== -->
+
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-fileupload.css')}}" />
+
+@endsection
+
 @section('content')
     <!---------------------Migas de pan ---------------------------------------->
         <nav aria-label="breadcrumb">
@@ -48,10 +59,12 @@
                                     @enderror
                                 </div>
 
+                              
+
                                 <div class="col-xs-12 col-sm-6 col-md-4">
                                     <div class="form-group ">
                                         <label class="control-label">Modelo<span style="color:red">*</span></label>
-                                        <select name="id_modelo" class="form-control">
+                                        <select name="id_modelo" class="form-control" multiple searchable>
                                         @foreach($modelos as $modelo)   
                                             @if($modelo->id == old('id_modelo'))
                                                 <option value="{{$modelo->id}}" selected >{{$modelo->modelo}}</option>
@@ -116,13 +129,18 @@
                             <div class="row p-3">
 
                                 <div class="col-xs-12 col-sm-6 col-md-4">
-                                    <div class="form-group">
-                                        <label>Categoría<span style="color:red">*</span></label>
-                                        <select name="" id="categoria" class="form-control" readonly>
-                                        <option value="">prueva</option>
-                                        </select>
-                                        
-                                    </div>
+                                        <div class="form-group ">
+                                            <label class="control-label">Categoria<span style="color:red">*</span></label>
+                                            <select name="id_categoria" class="form-control" >
+                                            @foreach($categorias as $categoria)   
+                                                @if($categoria->id == old('id_categoria'))
+                                                    <option value="{{$categoria->id}}" selected >{{$categoria->categoria}}</option>
+                                                @else
+                                                    <option value="{{$categoria->id}}">{{$categoria->categoria}}</option>
+                                                @endif
+                                            @endforeach
+                                            </select>
+                                        </div>
                                 </div>
 
                                 <div class="col-xs-12 col-sm-6 col-md-4">
@@ -147,18 +165,38 @@
                                 </p>
                             </div>
 
-                            <div class="col-xs-12 col-sm-6 col-md-12">
-                                <!-- <div class="form-group">
-                                    <!- <input type="text" class="lb" placeholder="Selecione la imagen del producto" readonly="" class="form-control">  --> 
-                                        <input id="a" type="file"  name="img[]"   accept="image/*" class="up" multiple="">  
-                                </div> 
-                               
+                            <div  class="col-md-12">
+                                <div id="preview" class="owl-carousel owl-theme">
+  
+                                    
+                                </div>
+
+                            </div>
+
+                           <p class="text-center"> <div id='no-img'class="row pb-4">
+                                <div class="col-md-4"></div>
+
+                                <div class="col-md-4">
+                                    <div class="" style="width: 200px; height: 150px; pb-3">
+                                        <img src="{{asset('img/noImagen.png')}}" alt="" />
+                                    </div>
+                                    
+                                    <div class="pt-3">
+                                        <span class="btn btn-theme btn-file " style="width: 200px;">
+                                        <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select image</span>
+                                        <input id="imagenes" type="file"  name="img[]"   accept="image/*" class="up" multiple onchange="preview()"> 
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4"></div>
+                            </div></p>
+                           
 
 
                         </div>
-                    <!-- <input type="hidden"  name="admin-name" value="admin"> -->
+
                         <p class="text-center"><button type="submit" class="btn  btn-theme">Agregar a la tienda</button></p>
-<!-
+
 
 
 
@@ -167,23 +205,76 @@
                     Los Campos marcados con <span style="color:red">*</span> son obligatorios
                 </p>
 
-            </div>
+<!-- <button id="btn_carousel" class="btn-default btn btn-danger" onclick="c()"></button>
+<button id="btn_carousel" class="btn-default btn btn-danger" onclick="d()"></button> -->
+
+<!-- ================================================================================================ -->
+
+
                    
 
 @endsection
 
 @section('scripts')
-
+<script type="text/javascript" src="{{asset('css/bootstrap-fileupload.js')}}"></script>
+<script src=" {{ asset('js/User/owl.carousel.min.js') }}" ></script>
 <script>
 
-function CategoriaText(){
+function preview(){
 
-var categoriaText = document.getElementById('id_categoria').options[id_categoria.selectedIndex].innerText;
-document.getElementById('categoria').textContent = marcaText
+         var element = document.getElementById("preview");
+            while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    
+    
+    var imgs = document.getElementById('imagenes');
+    var preview = document.getElementById('preview');
+    // var noI = document.getElementById('no-img').className='hidden';
+    
 
 
+    
+    for (var i=0; i<imgs.files.length; i++){
+        
+        let reader =new FileReader();
+        reader.readAsDataURL(imgs.files[i]);
+        reader.onload = function(e){
+            
+            image = document.createElement('img');
+            image.src = reader.result;
+            image.width ="200";
+            image.maxheight ="200";
+            
+            preview.append(image )
+            console.log(image);
+        }
+        
+    }
 
+// var btn = document.getElementById('btn_carousel').click();
+setTimeout(c, 2000);
+  
+}
+function d(){
+    var element = document.getElementById("preview");
+            while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+element.className = 'owl-carousel';
+}
+
+function c(){
+   
+
+$('.owl-carousel').owlCarousel({
+    center:true,
+    loop:true,
+    items:3,
+    margin:15,
+
+    })
+}
 
 </script>
-
 @endsection

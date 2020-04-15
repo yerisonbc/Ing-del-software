@@ -59,7 +59,6 @@
                 <th>Modelo</th> 
                 <th>Descripción</th> 
                 <th>Marca</th> 
-                <th>Categoría</th> 
                 <th>Estado</th> 
                 <th></th>
             </tr>
@@ -74,7 +73,6 @@
                 <td>{{$modelo->modelo}}</td>
                 <td>{{$modelo->descripcion}}</td>
                 <td>{{$modelo->marca->marca}}</td>
-                <td>{{$modelo->categoria->categoria}}</td>
                 <td>{{$modelo->estado}}</td>
                 <td >
                     <a id='edit' href='udt.php?id={{$modelo->id}}'  class='btn btn-theme btn-xs '>

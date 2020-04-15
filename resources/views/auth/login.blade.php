@@ -6,6 +6,7 @@
     <title>{{Route::currentRouteName() }}</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/User/mystyle.css')}}">
    
 </head>
 
@@ -99,13 +100,25 @@ margin-left: 4px;
 
 </style>
 <body>
+<header>
+      <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: rgba(0,0,0,0.5) !important;">
+          <div class="container-fluid">
+                <div class="col-3">
+                    <a href="{{route('inicio_user')}}" class="logo"><b>Tecno<span>SHOP</span></b></a>
 
+                        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                </div>
+            </div>
+      </nav>
+  </header>
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 
 		<div class="card">
 			<div class="card-header">
-				<h3>Inicia sesión </h3>
+				<h3>Inic<span style="color:#4ecdc4">iar ses</span>ión  </h3>
 				<div class="d-flex justify-content-end social_icon">
 					<span><i class="fab fa-facebook-square"></i></span>
 					<span><i class="fab fa-google-plus-square"></i></span>
@@ -146,7 +159,7 @@ margin-left: 4px;
 						<input type="checkbox">Recordarme
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+						<input type="submit" value="Login" class="btn float-right login_btn" style="background-color:#4ecdc4; color:#fff">
 					</div>
 				</form>
 			</div>

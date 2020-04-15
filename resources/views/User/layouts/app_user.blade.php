@@ -17,6 +17,10 @@
     <!-- ===================================================================== -->
 
     <link rel="stylesheet" href="{{asset('css/User/mystyle.css')}}">
+    <!-- ====================== Alertas ======================= -->
+    <link rel="stylesheet" href="{{ asset('css/jquery-confirm.min.css') }}">
+  
+    @yield('styles')
  
 </head>
 <body>
@@ -60,9 +64,11 @@
                         <div class="input-group">
 
                             <div class="input-group-prepend">
-                                <select name="" id="" class="prepend" style=" background:#F7FFF7;" >
-                                    <option value="">Celulares</option>
-                                    <option value="">Computadoras</option>
+                                <select name="categoria" id="" class="prepend" style=" background:#F7FFF7;" >
+                                    <option value=""> Todas </option>
+                                    @foreach( session('categorias') as $categoria )
+                                        <option value="{{$categoria->id}}">{{$categoria->categoria}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -81,7 +87,7 @@
                                 <a href="{{route('carro')}}">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span>Tu carrito</span>
-                                    <div class="qty">5</div>
+                                    <div class="qty">@guest 0 @else{{session('carrito')->count()}} @endguest</div>
                                 </a>
                                 </div>
                             </div>
@@ -94,7 +100,7 @@
                             </div>
                             <span style="color:#FFF">O</span>
                             <div>
-                                <a href="#" class="navb-a">
+                                <a href="{{route('registro')}}" class="navb-a">
                                     <i class="fas fa-user-plus"></i>
                                     <span>Registrate</span>
                                 </a>
@@ -233,7 +239,11 @@
     
     <script src=" {{ asset('js/app.js') }}" ></script>
     <script src=" {{ asset('js/User/owl.carousel.min.js') }}" ></script>
- 
+   <!-- ==================== alertas ===================================== -->
+   <script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
+
+   <script src="{{ asset('js/User/user_scripts.js') }}"></script>
+
 
   @yield('sc')
 

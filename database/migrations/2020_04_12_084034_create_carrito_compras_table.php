@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductoscoloresTable extends Migration
+class CreateCarritoComprasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateProductoscoloresTable extends Migration
      */
     public function up()
     {
-        Schema::create('_productoscolores', function (Blueprint $table) {
-            // $table->bigIncrements('id');
-            // $table->timestamps();
-            $table->unsignedBigInteger('id_producto');
-            $table->unsignedBigInteger('id_color');
-
-            $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade');
-            $table->foreign('id_color')->references('id')->on('colores')->onDelete('cascade');
+        Schema::create('carrito_compras', function (Blueprint $table) {
             
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_producto');
+            $table->integer('cantidad');
+            $table->string('estado', 10);
+            $table->timestamps();
 
+            $table->foreign('id_user')->references('id_user')->on('perfil_usuarios')->onDelete('cascade');
+            $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade');
+            
         });
     }
 
@@ -33,6 +35,6 @@ class CreateProductoscoloresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_productoscolores');
+        Schema::dropIfExists('carrito_compras');
     }
 }

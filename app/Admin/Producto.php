@@ -3,11 +3,12 @@
 namespace App\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User\carrito_compras;
 
 class Producto extends Model
 {
     protected $fillable = ['producto', 'caracteristica', 'precio', 'cantidad', 'id_marca', 
-    'id_modelo', 'id_categoria', 'id_proveedor', 'user_ins', 'user_udt', 'estado', 'condicion'];
+    'id_modelo', 'id_categoria', 'id_proveedor', 'pantalla', 'bateria','almacenamiento', 'procesador', 'user_ins', 'user_udt', 'estado', 'condicion'];
 
 
     public function scopeSearch($query, $busqueda, $estado)
@@ -28,8 +29,11 @@ class Producto extends Model
     public function proveedor(){
         return $this->belongsTo(Marca::class, 'id_proveedor');
     }
+    public function carrito(){
+        return $this->belongsTo(carrito_compras::class, 'id_producto');
+    }
     public function modelo(){
-        return $this->hasOne(Modelo::class, 'id');
+        return $this->belongsTo(Modelo::class, 'id_modelo');
     }
     public function Fotos()
     {

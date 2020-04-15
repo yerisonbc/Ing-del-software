@@ -298,16 +298,16 @@
                             </div>
                         </div>
                         <div class="product-body">
-                            <p class="product-category">{{$producto->modelo->categoria->categoria}}</p>
+                            <p class="product-category">{{$producto->categoria->categoria}}</p>
                             <h3 class="product-price">{{$producto->modelo->modelo}}</h3>
                             <h5 class="product-name">RD$ {{$producto->precio}}</h5>
 
                             <div class="product-btns">
-                              <button class="btn add-to-compare">
-                                <a class="" href="" >
+                              <button  class="btn add-to-compare"  onclick=" @guest window.location='/login'  @else addToCar({{$producto->id}}) @endguest" >
+                                <!-- <a class="" href="" > -->
                                   <i class="fa fa-shopping-cart"></i> </i>
                                   <span class="tooltipp">Agregar al carrito</span>
-                                </a>
+                                <!-- </a> -->
                               </button>
                               <button class="btn add-to-compare">
                                 <a class=""href="">
@@ -408,5 +408,26 @@
 });
 </script>
 
+<script type="" >
+
+function addToCar(id){
+  var token = '{{csrf_token()}}'
+
+  $.ajax({
+
+        url:"addCar",
+        data: {producto: id,  _token: token},
+        type: 'Post',
+        datatype: 'json',
+        success: function(data){
+            console.log(data);
+            alertSuccess();
+            
+        }
+    });
+
+}
+
+</script>
 
 @endsection

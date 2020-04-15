@@ -31,7 +31,7 @@
                 <td> {{$producto->caracteristica}}</td>
                 <td> {{$producto->cantidad}}</td>
                 <td> {{$producto->precio}}</td>
-                <td> {{$producto->modelo->categoria->categoria}}</td>
+                <td> {{$producto->categoria->categoria}}</td>
                 <td> {{$producto->id_proveedor}}</td>
                 <td> {{$producto->estado}}</td>
                 <td> 

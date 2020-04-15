@@ -18,7 +18,7 @@ class CreateProductTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('producto', 25);
-            $table->string('subtitulo', 50)->nullable();
+            $table->string('titulo')->nullable();
 
 
             $table->string('caracteristica', 125)->nullable();
@@ -33,13 +33,15 @@ class CreateProductTable extends Migration
             $table->integer('precio');
             $table->integer('cantidad');
 
-            $table->unsignedBigInteger('id_modelo');
-            $table->unsignedBigInteger('id_proveedor');
+            $table->unsignedBigInteger('id_modelo')->nullable();
+            $table->unsignedBigInteger('id_categoria');
+            $table->unsignedBigInteger('id_proveedor')->nullable();
             $table->unsignedBigInteger('user_ins');
             $table->unsignedBigInteger('user_udt')->nullable();
             $table->timestamps();
-            $table->char('estado');
+            $table->string('estado',10);
 
+            $table->foreign('id_categoria')->references('id')->on('categorias')->onDelete('cascade');
             $table->foreign('id_modelo')->references('id')->on('modelos')->onDelete('cascade');
             $table->foreign('id_proveedor')->references('id')->on('proveedor')->onDelete('cascade');
             $table->foreign('user_ins')->references('id_user')->on('perfil_usuarios')->onDelete('cascade');

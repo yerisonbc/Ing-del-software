@@ -29,7 +29,8 @@
 
                 @csrf
                 <div class="row p-3">
-                    <div class=" col-12 col-sm-6 ">
+
+                    <div class=" col-12 col-sm-4 ">
                         <div class="form-group ">
                             <label for="">Marca<span style="color:red">*</span></label>
                             <select id="id_marca" name="id_marca"  class="form-control" autofocus   onchange= "MarcaText()" >
@@ -43,8 +44,8 @@
                             </select>   
                         </div>
                     </div>
-                    <div class=" col-12 col-sm-6 ">
-                    
+
+                    <div class=" col-12 col-sm-4 ">
                         <label >Modelo <span style="color:red">*</span></label>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -57,24 +58,10 @@
                         @enderror
                     </div>
 
-                    <div class=" col-12 col-sm-6">
-                        <div class="form-group ">
-                            <label>Categoría<span style="color:red">*</span></label>
-                            <select class="form-control" name="id_categoria">
-                                @foreach ($categorias as $categoria)
-                                    @if($categoria->id == old('id_categoria'))
-                                    <option value="{{$categoria->id}}" selected >{{$categoria->categoria}}</option>
-                                    @else
-                                    <option value="{{$categoria->id}}">{{$categoria->categoria}}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class=" col-12 col-sm-6">
+                    <div class=" col-12 col-sm-4">
                         <div class="form-group ">
                             <label for="">Descripción</label>
-                            <input type="text" class="form-control @error('descripcion')is-invalid @enderror" maxlength="25" reuired name="descripcion" value="{{old('descripcion')}}"  >
+                            <input type="text" class="form-control @error('descripcion')is-invalid @enderror  " maxlength="25" reuired name="descripcion" value="{{old('descripcion')}}"  >
                         </div>
                         @error('descripcion')
                             <p class="text-danger"> {{ $message}} </p> 

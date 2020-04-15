@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/inicio_user';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -51,7 +51,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+           
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -70,17 +70,28 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'rol' => 'user',
             'password' => Hash::make($data['password']),
-        ])){
-            $user->roles()->attach(Role::where('name', 'user')->first());
-            if(Perfil_Usuario::create(['id_user'=>$user->id])){
+            ])){
+                    $user->roles()->attach(Role::where('name', 'user')->first());
 
-            }
-            else
-            {
-                $user = User::where('id', $user->id)->delete();
+                    if(Perfil_Usuario::create([
+                        'id_user'=>$user->id,
+                        'nombre'=> $data['nombre'],
+                        'apellido'=>$data['apellido'],
 
-            }
+                    ])){
 
+                        return $user;
+                    }
+                    else
+                    {
+                        $user = User::where('id', $user->id)->delete();
+
+                        $redirectTo = '/cuenta/nuevo_perfil';
+                        
+                    }
+
+        }else{
+            return 'nada nada';
         }
 
         

@@ -60,7 +60,7 @@ class modeloController extends Controller
         $alert;
         $request->validate([
             'modelo' => 'required|max:25',
-            'descripcion' => 'required|max:25',
+            
             
         ]);
 

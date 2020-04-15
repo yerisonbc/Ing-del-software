@@ -81,10 +81,7 @@ return view('Auth.login');
 })->name('l');
 
 
-Route::get('/r', function(){
-    return view('login.registro');
 
-})->name('registro');
 
 Route::get('/cargarimg', function(){
     return view('Admin.formi');
@@ -105,6 +102,18 @@ Route::get('/rp', function(){
 
 Route::get('/inicio_user', 'User\usuarioController@index')->name('inicio_user');
 Route::get('/buscar', 'User\usuarioController@search')->name('buscar');
+Route::get('/cuenta/nuevo_perfil', 'User\usuarioController@nuevoPerfil')->name('nuevo_perfil');
+Route::get('/productos/preview/{id}', 'User\usuarioController@previewProducto')->name('preview')->where(['id' => '[0-9]+']);
+
+
+
+// ============================ registrar Usuarios ==================================
+Route::get('/nevo_usuario', function(){
+    
+    return view('login.registro_usuario');
+
+})->name('registro');
+
 Route::get('/iu', function(){
     return view ('User.home');
     });
@@ -116,5 +125,6 @@ Route::get('/pre', function(){
     });
 
 Route::get('/cuenta/carro', 'User\cuentaUserController@carroCompras')->name('carro');
+Route::post('/addCar', 'User\cuentaUserController@addToCar')->name('addToCar');
 
 

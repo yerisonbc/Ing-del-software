@@ -101,9 +101,9 @@
                                 @guest
                                     <div>
                                         <a href="{{route('l')}}">
-                                        <i class="fas fa-sign-in-alt"></i>
-                                            <span>iniciar seccion</span>
-                                            
+                                            <i class="fas fa-sign-in-alt"></i>
+                                            <span>Registrate</span>
+                                                                                      
                                         </a>
                                     </div>
 
@@ -111,9 +111,8 @@
 
                                     <div>
                                         <a href="#">
-                                        <i class="fas fa-user-plus"></i>
-                                            <span>Registrate</span>
-                                            
+                                            <i class="fas fa-user-plus"></i>
+                                            <span>iniciar seccion</span>
                                         </a>
                                     </div>
                                 
