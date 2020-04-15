@@ -78,7 +78,7 @@ top: -45px;
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="far fa-envelope"></i></span>
                             </div>
-                            <input id="email-confirm" type="email" placeholder="Confirmar Correo" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
+                            <input id="email-confirm" type="email" placeholder="email_confirmation" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
                             
                             @error('email')
                                 <span class="invalid-feedback" role="alert">

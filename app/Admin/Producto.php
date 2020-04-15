@@ -4,6 +4,7 @@ namespace App\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User\carrito_compras;
+use App\factura_cuerpo;
 
 class Producto extends Model
 {
@@ -31,6 +32,9 @@ class Producto extends Model
     }
     public function carrito(){
         return $this->belongsTo(carrito_compras::class, 'id_producto');
+    }
+    public function factura(){
+        return $this->belongsTo(factura_cuerpo::class, 'id_producto');
     }
     public function modelo(){
         return $this->belongsTo(Modelo::class, 'id_modelo');

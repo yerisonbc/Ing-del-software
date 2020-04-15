@@ -10,6 +10,8 @@ use App\Admin\marca;
 use App\Admin\modelo;
 use Illuminate\Support\Facades\DB;
 Use App\User\carrito_compras;
+Use App\Cabeza_Factura;
+Use App\factura_cuerpo;
 
 
 
@@ -66,4 +68,62 @@ class usuarioController extends Controller
        
        
     }
+
+    public function validarCompra(){
+        $user = auth()->user()->id;
+        $carrito = carrito_compras::where('id_user', "$user")->where('estado', 'A')->get();
+        $provincias=  DB::table('provincias')->orderBy('nombre')->get();
+        $municipios=DB::table('municipios')->orderBy('nombre')->get();
+   
+        session(compact('carrito'));
+        return view('User.validacion_compra', compact('provincias', 'municipios'));
+        
+    }
+
+    public function comprar(Request $request){
+        $user = auth()->user()->id;
+
+      if( $cabeza = Cabeza_factura::create([ 'id_user' => $user, 'tipo_pago' => 'Efectivo', 'estado' => 'vendida',]))
+      {
+            $carrito = carrito_compras::where('id_user', "$user")->where('estado', 'A')->get();
+           
+            foreach($carrito as $producto){
+                 $cantidad_c = $producto->cantidad;
+                 $cantidad_f = $producto->productos->cantidad - $cantidad_c;
+
+                if($item = factura_cuerpo::create([    'id_factura' => $cabeza->id, 'id_producto'=> $producto->productos->id,
+                 'cantidad'=>$cantidad_c, 'precio'=> $producto->productos->precio, 'estado'=>'A' ]))
+                {
+                    if($producto->productos->update([ 'cantidad'=>  $cantidad_f]))
+                    {
+                        if($producto->update([ 'estado'=>  'C']))
+                        {
+                            return Redirect('usuario/compras')->with('status', 'success_cmp');
+
+                        }
+
+                    }
+
+                }       
+                
+            }
+      }
+
+        $carrito = carrito_compras::where('id_user', "$user")->where('estado', 'A')->get();
+        
+        session(compact('carrito'));
+        return view('User.validacion_compra', compact('provincias', 'municipios'));
+        
+    }
+
+    public function articulosComprado()
+    {
+        $user = auth()->user()->id;
+        $productos = Cabeza_Factura::where('id_user', $user)->get();
+       
+     
+        return view ('User.articulos_comprados', compact('productos') );
+    }
+
+
 }

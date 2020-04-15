@@ -42,7 +42,7 @@
                     <div class=" collapse navbar-collapse col-md-2" id="navbarSupportedContent">
                         @guest
                         <div class="">
-                                <a href="user.php" class="navb-a">
+                                <a href="{{route('login')}}" class="navb-a">
                                 <i class="far fa-user"></i>
                                 <span>Hola, Identificate</span>		
                                 </a>
@@ -50,9 +50,9 @@
 
                         @else
                             <div class="">
-                                <a href="user.php" class="navb-a">
+                                <a href="{{route('articuloComprado')}}" class="navb-a">
                                 <i class="far fa-user"></i>
-                                <span>Hola Yerison Brito</span>		
+                                <span>Hola </span>		
                                 </a>
                             </div>
                         @endguest
@@ -155,7 +155,7 @@
                         <div class="footer">
                             <h3 class="footer-title">Nosotros</h3>
                             <ul class="footer-links">
-                                <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker"></i>Calle Principa #25</a></li>
                                 <li><a href="#"><i class="fa fa-phone"></i>829-785-6438</a></li>
                                 <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
                             </ul>
@@ -195,7 +195,7 @@
                                 <li><a href="#">Mi cuenta</a></li>
                                 <li><a href="#">Carro de compras</a></li>
                                 <!-- <li><a href="#">Wishlist</a></li> -->
-                                <li><a href="#">Reparaciones</a></li>
+                                <!-- <li><a href="#">Reparaciones</a></li> -->
                                 <!-- <li><a href="#">Help</a></li> -->
                             </ul>
                         </div>

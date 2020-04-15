@@ -7,7 +7,7 @@
             
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h4 class="title">Carrito de Compras</h4>						
+                        <h4 class="title">Historial de compras</h4>						
 					</div>
                 </div>
 
@@ -22,36 +22,31 @@
                 <div class="col-md-9">
                      <div class="row">
                         <?php $total=0 ?>
-                        @foreach( session('carrito') as $producto)
+                        @foreach( $productos as $producto)
                         
-                        <?php $total = $producto->productos['precio'] + $total ?>
-
+                                    
                             <div class="col-md-4">
-                                <div class="product "  style=" margin-left:auto; margin-right: auto;">
-                                    <p class="text-right" title="Eliminar Producto" style="margin:5px">
-                                        <a href="#" class=""> 
-                                            <i class="fas fa-times"></i>
-                                        </a> 
-                                    </p>
-                                    <a href="#">
-                                        <div class="" style=" margin-left: auto; margin-right: auto;width:180px;height:200px">
-                                            <div class="product-img" style=" width:100%; height:100%">
-                                                <img src="{{asset($producto->productos['fotos'][0]['foto'])}}" style=" height:100%; width:100%;" >
-                                            </div>
-                                        </div>
-                                        <div class="product-body">
-                                            <p class="product-category">{{$producto->productos['modelo']['categoria']['categoria']}}</p>
-                                            <h4 class="product-price">{{$producto->productos['producto']}}</h4>
-                                            <h3 class="product-name"><a href="#">{{$producto->productos['precio']}}</a></h3>
+                                <div class="card "  style=" margin-left:auto; margin-right: auto;">
+                                    <p class="text-right" title="Eliminar Producto" style="margin:5px">	<a href="#" class=""> <i class="fas fa-times"></i> </a> </p>   
+                                    <div class="card-body">
+
+                                            <h4 class="product-name">Compra</h4>
+                                            <p class="product-name"><strong>Fecha: </strong> ''</p>
+                                            <p class="product-name"><strong>unidades:</strong> {{$producto->cantidad}}</p>
+                                            <p class="product-name"><strong>Estado:</strong> 5 </p>
+                                            <h5 class="product-price">$RD</h5>
                                             <div class="">
-                                                <h5>unidades: {{$producto->cantidad}}</h5>
-                                                
+                                                <hr> 
+                                                <a href="productos.php?id=">
+                                                ver detalles
+                                                </a>
+
                                             </div>
-                                        </div>
-                                            
-                                    </a>
+                                    </div>
+
                                 </div> 
                             </div>
+                                    
                         @endforeach
 					 </div>
                 </div>

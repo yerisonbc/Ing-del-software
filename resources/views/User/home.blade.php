@@ -118,44 +118,54 @@
       </div>
     </div>
     <!-- ============================================================================================================ -->
-   
+ 
+<!-- ============================================================================= -->
 <div class="section">
+
   <div class="container-fluid">
-    <!-- <div class="row"> -->
-      <!---------------- Titulo-------------->
-      <div class="col-md-12">
+    <div class="col-md-12">
         <div class="section-title">
-          <h3>Productos</h3>
+          <h3>Nuevos Productos</h3>
           <hr>
         </div>
-      </div>
     </div>
-
+  </div>
 
   <div class="container">
-      
+
         <div class=" nuevos-productos owl-carousel owl-theme" style="padding-bottom: 50px;">
 
-          <!-- ================Produtos=========================== -->
+          <!-- =========================== Produtos ======================================-->
+          @foreach($nuevosProductos as $producto)
             <div class=" item" style="">
                     <div class="product" >
                         <div>
                             <div class="product-img">
-                                <img src="img/User/product07.png" alt="">
+                                <img src="{{$producto->fotos[0]->foto}}" alt="">
                                 <div class="product-label">
                                   <span class="new">Nuevo</span>
                                 </div>
                             </div>
                         </div>
                         <div class="product-body">
-                            <p class="product-category">Celulares</p>
-                            <h3 class="product-name">Iphone XI</h3>
-                            <h4 class="product-price">500,000 RD$</h4>
+                            <p class="product-category">{{$producto->categoria->categoria}}</p>
+                            <h3 class="product-price">{{$producto->modelo->modelo}}</h3>
+                            <h5 class="product-name">RD$ {{$producto->precio}}</h5>
+
                             <div class="product-btns">
-                              <button class="btn add-to-compare"><a class=""href="">
-                                <i class="fa fa-shopping-cart"></i> </i>
-                                <span class="tooltipp">Agregar al carrito</span>
-                              </a></button>
+                              <button  class="btn add-to-compare"  onclick=" @guest window.location='/login'  @else addToCar({{$producto->id}}) @endguest" >
+                                <!-- <a class="" href="" > -->
+                                  <i class="fa fa-shopping-cart"></i> </i>
+                                  <span class="tooltipp">Agregar al carrito</span>
+                                <!-- </a> -->
+                              </button>
+                              <button class="btn add-to-compare">
+                                <a class=""href="">
+                                  <i class="fas fa-heart"></i>
+                                  <span class="tooltipp">Agregar a Favorito</span>
+                                </a>
+                              </button>
+
                             </div>
                         </div>
                         <div class="add-to-cart">
@@ -165,109 +175,98 @@
                           </a>
                         </div>
                     </div>
-                
               </div>
 
-          <!-- ================Produtos=========================== -->
-            <div class=" item">
-                <div class="product">
-                    <div>
-                        <div class="product-img">
-                            <img src="img/User/product02.png" alt="">
-                            <div class="product-label">
-                              <span class="new">Nuevo</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-body">
-                        <p class="product-category">Celulares</p>
-                        <h3 class="product-name">Iphone XI</h3>
-                        <h4 class="product-price">500,000 RD$</h4>
-                        <div class="product-btns">
-                          <button class="btn add-to-compare"><a class=""href="">
-                            <i class="fa fa-shopping-cart"></i> </i>
-                            <span class="tooltipp">Agregar al carrito</span>
-                          </a></button>
-                        </div>
-                    </div>
-                    <div class="add-to-cart">
-                      <a class="btn add-to-cart-btn">
-                        <i class="fa fa-shopping-cart"></i>
-                          Comprar
-                      </a>
-                    </div>
-                </div>
-              </div>
-
-          <!-- ================Produtos=========================== -->
-            <div class="item">
-                  <div class="product">
-                        <div>
-                            <div class="product-img">
-                                <img src="img/User/product02.png" alt="">
-                                <div class="product-label">
-                                  <span class="new">Nuevo</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Celulares</p>
-                            <h3 class="product-name">Iphone XI</h3>
-                            <h4 class="product-price">500,000 RD$</h4>
-                            <div class="product-btns">
-                              <button class="btn add-to-compare"><a class=""href="">
-                                <i class="fa fa-shopping-cart"></i> </i>
-                                <span class="tooltipp">Agregar al carrito</span>
-                              </a></button>
-                            </div>
-                        </div>
-                        <div class="add-to-cart">
-                          <a class="btn add-to-cart-btn">
-                            <i class="fa fa-shopping-cart"></i>
-                            Comprar
-                          </a>
-                        </div>
-                  </div>
-              </div>
-
-          <!-- ================Produtos=========================== -->
-            <div class="item">
-                    <div class="product">
-                        <div>
-                            <div class="product-img">
-                                <img src="img/User/product04.png" alt="">
-                                <div class="product-label">
-                                  <span class="new">Nuevo</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-body">
-                            <p class="product-category">Celulares</p>
-                            <h3 class="product-name">Iphone XI</h3>
-                            <h4 class="product-price">500,000 RD$</h4>
-                            <div class="product-btns">
-                              <button class="btn add-to-compare"><a class=""href="">
-                                <i class="fa fa-shopping-cart"></i> </i>
-                                <span class="tooltipp">Agregar al carrito</span>
-                              </a></button>
-                            </div>
-                        </div>
-                        <div class="add-to-cart">
-                          <a class="btn add-to-cart-btn">
-                            <i class="fa fa-shopping-cart"></i>
-                            Comprar
-                          </a>
-                        </div>
-                    </div>
-            </div>
-
+            @endforeach
         </div>
+        <!-- Carousel End -->
+
       
 
     </div>
   <!-- </div>  -->
 </div>
-  
+ 
+<div class="container-fluid">
+
+      <div class="col-md-12">
+          <div class="section-title">
+            <h3>Categorías</h3>
+            <hr>
+          </div>
+      </div>
+      <div class="categorias owl-carousel owl-theme ">
+              <div class="item">
+                <a href="">
+                  <div class="shop rounded-circle" style="width:15vw;">
+                      <div class="shop-img" style="background-color:#003C7A">
+                          <img class="rounded-circle" src="img/User/shop01.png" alt="">
+                      </div>
+                      
+                  </div>
+                  <h3 class="sub text-center">Celulares <i class="fa fa-arrow-circle-right"></i></h3>
+                </a>
+            </div>
+            
+            <!-- /shop -->
+            
+            <div class="item">
+              <a href="" >
+                <div class="shop rounded-circle" style="width:15vw;">
+                    <div class="shop-img" style="background-color:#007991">
+                        <img class="rounded-circle" src="img/User/shop02.png" alt="">
+                    </div>
+                </div>
+                <h3 class="sub text-center">Celulares <i class="fa fa-arrow-circle-right"></i></h3>
+              </a>
+            </div>
+
+           
+            
+              <div class="item">
+                <a href="" >
+                  <div class="shop rounded-circle" style="width:15vw;">
+                      <div class="shop-img" style="background-color:#FE4A49">
+                          <img class="rounded-circle" src="img/User/shop03.png" alt="">
+                      </div>
+                  </div>
+                  <h3 class="sub text-center">Celulares <i class="fa fa-arrow-circle-right"></i></h3>
+                </a>
+              </div>
+
+            
+            <!-- shop -->
+
+              <div class="item">
+                <a href="" class="">
+                  <div class="shop rounded-circle" style="width:15vw;">
+                      <div class="shop-img">
+                          <img class="rounded-circle" src="img/User/shop03.png" alt="">
+                      </div>
+                  </div>
+                  <h3 class="sub text-center">Celulares <i class="fa fa-arrow-circle-right"></i></h3>
+                </a>
+              </div>
+        
+              <div class="item">
+                <a href="">
+                  <div class="shop rounded-circle" style="width:15vw;">
+                      <div class="shop-img">
+                          <img class="rounded-circle" src="img/User/shop03.png" alt="">
+                      </div>
+                  </div>
+                  <h3 class="sub text-center">Celulares <i class="fa fa-arrow-circle-right"></i></h3>
+                </a>
+              </div>
+        
+      </div>
+    </div>
+    <!-- ============================================================================================================ -->
+
+
+
+
+
 
 <!-- ============================================================================= -->
 <div class="section">

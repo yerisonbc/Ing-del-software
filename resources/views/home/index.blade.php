@@ -1,4 +1,4 @@
-@extends("app")
+@extends("home.app")
 @section("contenido")
 
 <div class="mx-3 my-3">

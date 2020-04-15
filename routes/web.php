@@ -111,6 +111,13 @@ Route::get('/cuenta/nuevo_perfil', 'User\usuarioController@nuevoPerfil')->name('
 Route::get('/productos/preview/{id}', 'User\usuarioController@previewProducto')->name('preview')->where(['id' => '[0-9]+']);
 
 
+Route::get('/productos/confirmacion/', 'User\usuarioController@validarCompra')->name('validarCompra');
+Route::post('/compar', 'User\usuarioController@Comprar')->name('comprar');
+
+Route::get('/usuario/compras/', 'User\usuarioController@articulosComprado')->name('articuloComprado');
+
+
+
 
 // ============================ registrar Usuarios ==================================
 Route::get('/nevo_usuario', function(){
@@ -125,9 +132,9 @@ Route::get('/iu', function(){
 Route::get('/ver_productos', function(){
     return view ('User.producto');
     });
-Route::get('/pre', function(){
-    return view ('Admin.Form.productos');
-    });
+// Route::get('/pre', function(){
+//     return view ('Admin.Form.productos');
+//     });
 
 Route::get('/cuenta/carro', 'User\cuentaUserController@carroCompras')->name('carro');
 Route::post('/addCar', 'User\cuentaUserController@addToCar')->name('addToCar');
