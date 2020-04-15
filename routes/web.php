@@ -70,6 +70,11 @@ Route::post('modelo_delete', 'Admin\modeloController@delete')->name('modelo_dele
 // =======================================================================
 
 
+// ========================= Chat ===================================
+Route::get('/c', 'hController@index');
+// Route::get('messages', 'ChatsController@fetchMessages');
+// Route::post('messages', 'ChatsController@sendMessage');
+// =======================================================================
 
 
 // Auth::routes();

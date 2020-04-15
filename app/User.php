@@ -75,4 +75,9 @@ class User extends Authenticatable
     public function perfil_Usuario(){
         return $this->hasOne(perfil_Usuario::class, 'id_user');
     }
+
+    public function messages()
+    {
+    return $this->hasMany(Message::class);
+    }
 }

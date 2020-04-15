@@ -28,7 +28,7 @@
 <!-- ========================================== nav bar ================================================= -->
   <header>
       <nav class="navbar navbar-expand-lg navbar-dark">
-          <div class="container-fluid">
+          <div id="app" class="container-fluid">
 
                 <div class="col-3">
                     <!-- <a class="navbar-brand collapse navbar-collapse navb" id="navbarSupportedContent"  href="inicio_user">LOGO</a> -->

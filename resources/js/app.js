@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -13,6 +14,7 @@ require('./bootstrap');
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 
 /**
@@ -21,3 +23,6 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const app = new Vue({
+    el: '#app',
+});
